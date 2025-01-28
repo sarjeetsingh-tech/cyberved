@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Hackathon Registration</title>
+    <style>
+        :root {
+            --primary: #e99331;
+            --secondary: #e19d36;
+            --accent: #e99331;
+            --text-light: #ffffff;
+            --text-dark: #e99331;
+            --border-radius: 8px;
+            --error-color: #ff4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .header {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            background: rgb(37, 23, 77);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        label.required::after {
+            content: '*';
+            color: var(--error-color);
+            margin-left: 4px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(233, 147, 49, 0.2);
+        }
+
+        input.error, select.error {
+            border-color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .subbtn {
+            background: var(--accent);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 500;
+            width: 100%;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+
+        .primary-btn {
+            flex: 2;
+            background: var(--accent);
+        }
+
+        .primary-btn:hover {
+            background: var(--secondary);
+        }
+
+        .secondary-btn {
+            flex: 1;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(233, 147, 49, 0.1);
+        }
+
+        .subbtn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .section-header {
+            color: var(--text-dark);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>OSINT Hackathon 2025</h1>
+            <p>Uncover. Analyze. Innovate.</p>
+        </div>
+
+        <div class="form-container">
+            <form id="registrationForm" novalidate>
+                <h2 class="section-header">Personal Information</h2>
+                <input type="hidden" name="formType" value="call_for_paper">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="required">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="required">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="organization" class="required">Organization/Institution</label>
+                        <input type="text" id="organization" name="organization" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="designation" class="required">Designation</label>
+                        <input type="text" id="designation" name="designation" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone" class="required">Phone Number</label>
+                        <input type="tel" id="telephone" name="telephone" required>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="whatsapp" class="required">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telegram">Telegram ID</label>
+                        <input type="text" id="telegram" name="telegram">
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Technical Background</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="githubProfile" class="required">GitHub Profile URL</label>
+                        <input type="url" id="githubProfile" name="githubProfile" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedinProfile">LinkedIn Profile URL</label>
+                        <input type="url" id="linkedinProfile" name="linkedinProfile">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience" class="required">Years of OSINT Experience</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select Experience</option>
+                            <option value="0-1">0-1 years</option>
+                            <option value="1-3">1-3 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5+">5+ years</option>
+                        </select>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="grid-column: span 3;">
+                        <label for="skills" class="required">OSINT Tools & Skills</label>
+                        <textarea id="skills" name="skills" placeholder="List your experience with OSINT tools (e.g., Maltego, Shodan, TheHarvester, etc.) and relevant skills" required></textarea>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Team Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="teamName" class="required">Team Name</label>
+                        <input type="text" id="teamName" name="teamName" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teamSize" class="required">Team Size</label>
+                        <select id="teamSize" name="teamSize" required>
+                            <option value="">Select Team Size</option>
+                            <option value="2">2 Members</option>
+                            <option value="3">3 Members</option>
+                            <option value="4">4 Members</option>
+                        </select>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teamRole" class="required">Your Role in Team</label>
+                        <input type="text" id="teamRole" name="teamRole" required>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="grid-column: span 3;">
+                        <label for="projectIdea" class="required">Brief Project Idea</label>
+                        <textarea id="projectIdea" name="projectIdea" placeholder="Describe your initial project idea or area of interest for the hackathon" required></textarea>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" class="subbtn primary-btn" id="subbtn">
+                        Register for Hackathon
+                        <div class="spinner" id="submitSpinner"></div>
+                    </button>
+                    <a href="/index.html" class="subbtn secondary-btn">
+                        Return
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:5000/register';
+
+        const validationRules = {
+            email: {
+                pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                message: 'Please enter a valid email address'
+            },
+            telephone: {
+                pattern: /^\d{10}$/,
+                message: 'Please enter a valid 10-digit phone number'
+            },
+            whatsapp: {
+                pattern: /^\d{10}$/,
+                message: 'Please enter a valid 10-digit WhatsApp number'
+            },
+            githubProfile: {
+                pattern: /^https:\/\/github\.com\/[a-zA-Z0-9-]+$/,
+                message: 'Please enter a valid GitHub profile URL'
+            }
+        };
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const errorDiv = field.parentElement.querySelector('.error-message');
+            let isValid = true;
+            let errorMessage = '';
+
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+                errorMessage = 'This field is required';
+            }
+            else if (value && validationRules[field.name]) {
+                isValid = validationRules[field.name].pattern.test(value);
+                if (!isValid) {
+                    errorMessage = validationRules[field.name].message;
+                }
+            }
+
+            field.classList.toggle('error', !isValid);
+            if (errorDiv) {
+                errorDiv.textContent = errorMessage;
+                errorDiv.classList.toggle('visible', !isValid);
+            }
+
+            return isValid;
+        }
+
+        function formatPhoneNumber(input) {
+            input.value = input.value.replace(/\D/g, '').slice(0, 10);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registrationForm');
+            const submitBtn = document.getElementById('subbtn');
+            const spinner = document.getElementById('submitSpinner');
+
+            form.querySelectorAll('input, select, textarea').forEach(field => {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('error')) {
+                        validateField(field);
+                    }
+                });
+
+                if (field.type === 'tel') {
+                    field.addEventListener('input', () => formatPhoneNumber(field));
+                }
+            });
+
+            form.onsubmit = async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                let isValid = true;
+                form.querySelectorAll('input, select, textarea').forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    return false;
+                }
+
+                submitBtn.disabled = true;
+                spinner.style.display = 'block';
+
+                try {
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+
+                    // Prepare data for API
+                    const apiData = {
+                        formType: 'hackathon',
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        telephone: data.telephone,
+                        whatsapp: data.whatsapp,
+                        telegram_id: data.telegram,
+                        organization: data.organization,
+                        designation: data.designation,
+                        githubProfile: data.githubProfile,
+                        linkedinProfile: data.linkedinProfile,
+                        experience: data.experience,
+                        skills: data.skills,
+                        teamName: data.teamName,
+                        teamSize: parseInt(data.teamSize),
+                        teamRole: data.teamRole,
+                        projectIdea: data.projectIdea
+                    };
+
+                    const response = await fetch(`${API_URL}/hackathon`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(apiData)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Registration failed');
+                    }
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Create success message
+                        const successMessage = document.createElement('div');
+                        successMessage.style.cssText = `
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            background: var(--primary);
+                            color: white;
+                            padding: 2rem;
+                            border-radius: 8px;
+                            text-align: center;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            z-index: 1000;
+                        `;
+                        successMessage.innerHTML = `
+                            <h2 style="margin-bottom: 1rem;">Registration Successful!</h2>
+                            <p>Thank you for registering for the OSINT Hackathon 2025.</p>
+                            <p>You will receive further instructions and team confirmation via email.</p>
+                            <p style="margin-top: 1rem; font-size: 0.9rem;">Get ready to showcase your OSINT skills!</p>
+                        `;
+                        document.body.appendChild(successMessage);
+                        
+                        // Remove success message and reset form after 3 seconds
+                        setTimeout(() => {
+                            successMessage.remove();
+                            form.reset();
+                        }, 3000);
+                    } else {
+                        throw new Error('Registration failed');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Show error message to user
+                    const errorMessage = document.createElement('div');
+                    errorMessage.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: var(--error-color);
+                        color: white;
+                        padding: 2rem;
+                        border-radius: 8px;
+                        text-align: center;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        z-index: 1000;
+                    `;
+                    errorMessage.innerHTML = `
+                        <h2 style="margin-bottom: 1rem;">Registration Failed</h2>
+                        <p>Please try again or contact support if the problem persists.</p>
+                    `;
+                    document.body.appendChild(errorMessage);
+                    
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 3000);
+                } finally {
+                    submitBtn.disabled = false;
+                    spinner.style.display = 'none';
+                }
+
+                return false;
+            };
+        });
+    </script>
+</body>
+</html>

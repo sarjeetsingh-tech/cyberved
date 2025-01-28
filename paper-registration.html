@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSIFS Registration Form</title>
+    <style>
+        :root {
+            --primary: #e99331;
+            --secondary: #e19d36;
+            --accent: #e99331;
+            --text-light: #ffffff;
+            --text-dark: #e99331;
+            --border-radius: 8px;
+            --error-color: #ff4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .header {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            background: rgb(37, 23, 77);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        label.required::after {
+            content: '*';
+            color: var(--error-color);
+            margin-left: 4px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(233, 147, 49, 0.2);
+        }
+
+        input.error,
+        select.error {
+            border-color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .subbtn {
+            background: var(--accent);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 500;
+            width: 100%;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+
+        .subbtn:hover {
+            background: #ad5600;
+        }
+
+        .subbtn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translateY(-50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-50%) rotate(360deg);
+            }
+        }
+        .button-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.primary-btn {
+    flex: 2;
+    background: var(--accent);
+}
+
+.secondary-btn {
+    flex: 1;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.secondary-btn:hover {
+    background: rgba(233, 147, 49, 0.1);
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>UPSIFS Call For Paper</h1>
+            <p>Dimensions of Cyber Warfare, Multilateral Legal Frameworks & Strategic Countermeasures</p>
+        </div>
+
+        <div class="modal" id="errorModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Please Fix These Errors</h2>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="registrationForm" novalidate>
+                <input type="hidden" name="formType" value="call_for_paper">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="required">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName">Middle Name (Optional)</label>
+                        <input type="text" id="middleName" name="middleName">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="required">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="designation" class="required">Designation</label>
+                        <select id="designation" name="designation" required>
+                            <option value="">Select Designation</option>
+                            <option value="student">Student</option>
+                            <option value="professional">Professional</option>
+                            <option value="academician">Academician</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone" class="required">Telephone</label>
+                        <input type="tel" id="telephone" name="telephone" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp" class="required">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telegram">Telegram ID</label>
+                        <input type="text" id="telegram" name="telegram">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="text" id="amount" name="amount" value="5000" readonly>
+                    </div>
+                </div>
+
+                <div class="button-container" style="display: flex; gap: 1rem;">
+                    <button type="submit" class="subbtn primary-btn" id="subbtn">
+                        Register & Pay
+                        <div class="spinner" id="submitSpinner"></div>
+                    </button>
+                    <a href="/index.html" class="subbtn secondary-btn" style="text-decoration: none; flex: 1; display: inline-block; text-align: center;">
+                        Return
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:5000/register';
+
+        const validationRules = {
+            telephone: {
+                pattern: /^\d{10}$/,
+                message: 'Please enter a valid 10-digit number'
+            },
+            whatsapp: {
+                pattern: /^\d{10}$/,
+                message: 'Please enter a valid 10-digit number'
+            },
+            email: {
+                pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                message: 'Please enter a valid email address'
+            }
+        };
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const errorDiv = field.parentElement.querySelector('.error-message');
+            let isValid = true;
+            let errorMessage = '';
+
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+                errorMessage = 'This field is required';
+            }
+            else if (value && validationRules[field.name]) {
+                isValid = validationRules[field.name].pattern.test(value);
+                if (!isValid) {
+                    errorMessage = validationRules[field.name].message;
+                }
+            }
+
+            field.classList.toggle('error', !isValid);
+            if (errorDiv) {
+                errorDiv.textContent = errorMessage;
+                errorDiv.classList.toggle('visible', !isValid);
+            }
+
+            return isValid;
+        }
+
+        function displayErrors(errors) {
+            errors.forEach(error => {
+                const field = document.querySelector([name="${error.field}"]);
+                if (field) {
+                    const errorDiv = field.parentElement.querySelector('.error-message');
+                    if (errorDiv) {
+                        errorDiv.textContent = error.message;
+                        errorDiv.classList.add('visible');
+                        field.classList.add('error');
+                    }
+                }
+            });
+        }
+
+        function formatPhoneNumber(input) {
+            input.value = input.value.replace(/\D/g, '').slice(0, 10);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registrationForm');
+            const submitBtn = document.getElementById('subbtn');
+            const spinner = document.getElementById('submitSpinner');
+
+            form.querySelectorAll('input, select').forEach(field => {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('error')) {
+                        validateField(field);
+                    }
+                });
+
+                if (field.type === 'tel') {
+                    field.addEventListener('input', () => formatPhoneNumber(field));
+                }
+            });
+
+            form.onsubmit = async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const errors = [];
+                let isValid = true;
+
+                form.querySelectorAll('input, select').forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                        const label = field.previousElementSibling.textContent;
+                        errors.push(`${label}: ${field.nextElementSibling.textContent}`);
+                    }
+                });
+
+                if (!isValid) {
+                    const errorObjects = errors.map(error => ({
+                        field: error.split(':')[0].toLowerCase().replace(/\s+/g, ''),
+                        message: error.split(':')[1].trim()
+                    }));
+                    displayErrors(errorObjects);
+                    return false;
+                }
+
+                submitBtn.disabled = true;
+                spinner.style.display = 'block';
+
+                try {
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+
+                    const response = await fetch(`${API_URL}/paper`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.redirectUrl) {
+                         window.location.assign(result.redirectUrl);
+                     }
+                    window.alert('redirecting ...')
+                } catch (error) {
+                    // console.error('Error:', error);
+                } finally {
+                    submitBtn.disabled = false;
+                    spinner.style.display = 'none';
+                }
+
+                return false;
+            };
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERVEDAMATHAN</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo-placeholder1">
+                <img src="/images/UPIFS1.png" alt="Logo 1">
+            </div>
+           
+        </div>
+    
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="overview.html" class="nav-link">Overview</a>
+            <a href="call-for-paper.html" class="nav-link">Call For Paper</a>
+            <a href="hackathon.html" class="nav-link">Hackathon</a>
+            <a href="summit.html" class="nav-link">Summit</a>
+            <div class="dropdown">
+                <button class="dropbtn">About <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">About Speakers</a>
+                    <a href="#">About Organizer</a>
+                    <a href="#">About Sponsors</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="nav-right">
+            <button class="register-btn">Register Now</button>
+            <div class="logo-placeholder">
+                <img src="/images/CF.png" alt="Logo 2">
+            </div>
+        </div>
+    </nav>
+  
+    
+
+    <!-- Hero Banner Slider -->
+    <section class="hero">
+        <div class="slider-container">
+            <div class="slider">
+                <a href="summit.html" target="_blank" class="slide">
+                    <img src="/images/slide_summit.png" alt="Slide 1">
+                </a>
+                <a href="call-for-paper.html" target="_blank" class="slide">
+                    <img src="/images/Cyber Veda Manthan 2.png" alt="Slide 2">
+                </a>
+                <a href="hackathon.html" target="_blank" class="slide">
+                    <img src="/images/Cyber Veda Manthan 3.png" alt="Slide 3">
+                </a>
+            </div>
+            <div class="slider-navigation">
+                <button class="nav-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="scroll-down">
+                <a href="#patrons">
+                    <i class="fas fa-chevron-down bounce"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Patrons Section -->
+    <section class="patrons" id="patrons">
+        <h2 class="section-title">Our Patrons</h2>
+        <div class="patrons-grid">
+            <div class="patron-card featured">
+                <div class="patron-image-defence">
+                    <img src="images/defence.jpg" alt="Patron 1">
+                </div>
+                <div class="patron-content">
+                    <h3>Shri Rajnath Singh</h3>
+                    <p class="designation">Minister of Defense</p>
+                    <p class="description">Honorable Defense Minister of India, leading the nation's military modernization and strategic initiatives.</p>
+                    
+                </div>
+            </div>
+            <div class="patron-card">
+                <div class="patron-image">
+                    <img src="images/The_Uttar_Pradesh_Chief_Minister.jpg" alt="Patron 2">
+                </div>
+                <div class="patron-content">
+                    <h3>Shri Yogi Adityanath</h3>
+                    <p class="designation">Chief Minister Uttar Pradesh</p>
+                    <p class="description">Leading Uttar Pradesh towards progress and development through innovative governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--
+
+    
+    <section id="speakers" class="speakers">
+        <h2 class="section-title">Our Distinguished Speakers</h2>
+        <div class="speakers-grid">
+            <div class="speaker-card">
+                <div class="speaker-image">
+                    <img src="" alt="General Upendra Dwivedi">
+                </div>
+                <div class="speaker-content">
+                    <h3>General Upendra Dwivedi</h3>
+                    <p class="title">Chief of the Army Staff</p>
+                    <p class="honors">PVSM, AVSM</p>
+                    <div class="speaker-overlay">
+                        <p class="expertise">Strategic Defense & Military Leadership</p>
+                        <div class="speaker-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-image">
+                    <img src="" alt="AP Singh">
+                </div>
+                <div class="speaker-content">
+                    <h3>AP Singh</h3>
+                    <p class="title">Air Chief Marshal</p>
+                    <p class="honors">PVSM AVSM</p>
+                    <div class="speaker-overlay">
+                        <p class="expertise">Air Defense & Strategic Operations</p>
+                        <div class="speaker-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-image">
+                    <img src="" alt="Admiral Dinesh K Tripathi">
+                </div>
+                <div class="speaker-content">
+                    <h3>Admiral Dinesh K Tripathi</h3>
+                    <p class="title">Chief of the Naval Staff (India)</p>
+                    <p class="honors">PVSM, AVSM, NM</p>
+                    <div class="speaker-overlay">
+                        <p class="expertise">Maritime Strategy & Naval Operations</p>
+                        <div class="speaker-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
+    <!-- Programs Section -->
+    <section id="programs"class="programs">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="program-cards">
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Hackathon</h3>
+                    <p>Hackathon on Open Source Intelligence (OSINT) for Cyber Defense</p>
+                    <div class="program-details">
+                        <span><i class="fas fa-calendar"></i> 16-18March 2025</span>
+                        <span><i class="fas fa-users"></i> 50+ Teams</span>
+                        <span><i class="fas fa-clock"></i> 72 Hours</span>
+                        <span><i class="fa-solid fa-certificate"></i> Participants Certificate</span>
+                    </div>
+                    <a href="hackathon.html" class="program-link">Learn more</a>
+                </div>
+            </div>
+            <div class="program-card featured">
+                <div class="program-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="program-content">
+                    <h3>CYBERVEDAMATHAN 2025</h3>
+                    <p>3 DAYS Summit ON Dimension of Cyber warfare, Multilateral Legal Frameworks & Strategic Countermeasures</p>
+                    <div class="program-details">
+                        <span><i class="fas fa-calendar"></i> 19-21March 2025</span>
+                        <span><i class="fas fa-users"></i> 1000+ Attendees</span>
+                        <span><i class="fas fa-globe"></i> International</span>
+                    </div>
+                    <a href="summit.html" class="program-link">Learn more</a>
+                </div>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Call For Papers</h3>
+                    <p>Submit your research papers on Cybersecurity, Digital Forensics, and Information Warfare</p>
+                    <div class="program-details">
+                        <span><i class="fas fa-calendar"></i> 17-18March 2025</span>
+                        <span><i class="fas fa-award"></i> Best Paper Awards</span>
+                        <span><i class="fas fa-book"></i> Publication Opportunity</span>
+                    </div>
+                    <a href="call-for-paper.html" class="program-link">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section
+    <section class="about" id="about">
+        
+        
+        <div class="about-content">
+            <div class="section-titled">
+                <h2 >What is UPSIFS?</h2>
+            </div>
+            <div class="about-text">
+                
+                <p>Uttar Pradesh State Institute of Forensic Science (UPSIFS) is a premier institution affiliated with the National Forensic Science University (NFSU), Gandhinagar, an Institute of National Importance established by the Ministry of Home Affairs, Government of India.</p>
+                <p>As a center of excellence, UPSIFS combines cutting-edge forensic science education with innovative research capabilities. Our affiliation with NFSU ensures alignment with national and global standards in forensic science education and research, preparing the next generation of forensic experts and cyber security professionals.</p>
+                <p>Our mission is to foster innovation and develop future-ready skills among students and professionals, particularly in areas of cybersecurity, digital forensics, and advanced investigative techniques. Through our dynamic platform, participants develop and showcase creative solutions to real-world challenges in forensic science and cybersecurity.</p>
+            </div>
+            <div class="about-features">
+                <div class="feature">
+                    <i class="fas fa-microscope"></i>
+                    <h4>Advanced Research</h4>
+                    <p>State-of-the-art laboratories and research facilities</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Expert Faculty</h4>
+                    <p>Learning from industry professionals and academic experts</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-globe"></i>
+                    <h4>Global Standards</h4>
+                    <p>International curriculum and certification programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <h2 class="section-title">Our Strategic Partners</h2>
+        <div class="partner-categories">
+            <div class="partner-category featured">
+                <h3>Official Partners</h3>
+                <div class="partner-grid">
+                    <div class="partner-logo">
+                        <img src="/images/Cybervidyapeeth.png" alt="Partner">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="/images/Abhedi .png" alt="Partner">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="/images/aicte.png" alt="Partner">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="/images/Pivot.png" alt="Partner">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="/images/youth4nation.png" alt="Partner">
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="partner-category">
+                <h3>Evaluation Partners</h3>
+                <div class="partner-grid">
+                    <div class="partner-logo">
+                        <img src="/images/flat-design-culture-logo-template_23-2149847545.avif" alt="Partner">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="/images/flat-design-culture-logo-template_23-2149847545.avif" alt="Partner">
+                    </div>
+                </div>
+            </div>
+            <div class="partner-category">
+                <h3>Learning Partners</h3>
+                <div class="partner-grid">
+                    <div class="partner-logo">
+                        <img src="/images/flat-design-culture-logo-template_23-2149847545.avif" alt="Partner">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="/images/flat-design-culture-logo-template_23-2149847545.avif" alt="Partner">
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 97111 47900</p>
+                <p><i class="fa-brands fa-whatsapp"></i> +91 89397 32808</p>
+                <p><i class="fas fa-envelope"></i> cyberveda@upsifs.ac.in</p>
+                <p><i class="fas fa-envelope"></i> mentor@cybervidyapeeth.in</p>
+
+                <p><i class="fas fa-map-marker-alt"></i> Uttar Pradesh, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#speakers">Our Speakers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+            
+                <h3>Powered by</h3>
+                <div class="power-logos">
+                    <img src="/images/Cybervidyapeeth.png" alt="cybervidyapeeth">
+                    <img src="/images/youth4nation.png" alt="Youth4Nation">
+                    <img src="/images/Abhedi .png" alt="cybervidyapeeth">
+                    <img src="/images/Pivot.png" alt="Pivot">
+                   
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+            
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UPSIFS. All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
