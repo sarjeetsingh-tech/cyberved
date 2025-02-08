@@ -1,455 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSIFS Call For Paper</title>
-    <style>
-        :root {
-            --primary: #e99331;
-            --secondary: #e19d36;
-            --accent: #e99331;
-            --text-light: #ffffff;
-            --text-dark: #e99331;
-            --border-radius: 8px;
-            --error-color: #ff4444;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .header {
-            background: var(--primary);
-            color: var(--text-light);
-            padding: 1.5rem;
-            text-align: center;
-            border-radius: var(--border-radius);
-            margin-bottom: 2rem;
-        }
-
-        .form-container {
-            background: rgb(37, 23, 77);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        label.required::after {
-            content: '*';
-            color: var(--error-color);
-            margin-left: 4px;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            background: white;
-        }
-
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(233, 147, 49, 0.2);
-        }
-
-        input.error,
-        select.error {
-            border-color: var(--error-color);
-        }
-
-        .error-message {
-            color: var(--error-color);
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
-            display: none;
-        }
-
-        .error-message.visible {
-            display: block;
-        }
-
-        .button-container {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .subbtn {
-            background: var(--accent);
-            color: var(--text-light);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 500;
-            transition: background 0.3s ease;
-            position: relative;
-        }
-
-        .primary-btn {
-            flex: 2;
-            background: var(--accent);
-        }
-
-        .primary-btn:hover {
-            background: var(--secondary);
-        }
-
-        .secondary-btn {
-            flex: 1;
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .secondary-btn:hover {
-            background: rgba(233, 147, 49, 0.1);
-        }
-
-        .subbtn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        @keyframes spin {
-            0% { transform: translateY(-50%) rotate(0deg); }
-            100% { transform: translateY(-50%) rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Call for Papers </title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/call.css">
 </head>
-
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>UPSIFS Call For Paper</h1>
-            <p>Dimensions of Cyber Warfare, Multilateral Legal Frameworks & Strategic Countermeasures</p>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <img src="images/UPIFS1.png" alt="UPSIFS Logo" class="nav-logo">
+                </div>
+                
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#themes" class="nav-link">Themes</a>
+                <a href="#requirements" class="nav-link">Requirements</a>
+                <a href="#dates" class="nav-link">Important Dates</a>
+                <a href="#awards" class="nav-link">Awards</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="paper-registration.html" class="nav-btn"> Paper Registration</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Call for Papers</h1>
+            <h2 class="hero-subtitle">National Conference on Cyber Warfare & Countermeasures</h2>
+            <p class="hero-text">Join India's premier cybersecurity conference exploring innovative solutions for national defense</p>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <i class="fas fa-award"></i>
+                    <span class="stat-number">80000</span>
+                    <span class="stat-label">Prize Pool</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="stat-number">  3  </span>
+                    <span class="stat-label">Conference</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-users"></i>
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Participants</span>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="paper-registration.html" class="btn btn-primary"> Paper Registration</a>
+                <a href="#themes" class="btn btn-secondary">View Guidelines</a>
+            </div>
         </div>
+        <div class="hero-overlay"></div>
+    </section>
 
-        <div class="form-container">
-            <form id="registrationForm" novalidate>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName" class="required">First Name</label>
-                        <input type="text" id="firstName" name="firstName" required>
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="middleName">Middle Name (Optional)</label>
-                        <input type="text" id="middleName" name="middleName">
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName" class="required">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                        <div class="error-message"></div>
-                    </div>
+    <!-- Overview Section -->
+    <section id="overview" class="section overview-section">
+        <div class="container">
+            <h2 class="section-title">Conference Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-content">
+                    <p>The UPSIFS, in collaboration with Cybervidyapeeth Foundation, proudly announces a national-level conference focused on Cyber Warfare & Countermeasures. This prestigious event brings together researchers, academicians, and professionals from across India to share innovative research findings in critical areas of national security.</p>
+                    <ul class="overview-features">
+                        <li><i class="fas fa-check-circle"></i> Publication in conference proceedings with ISBN</li>
+                        <li><i class="fas fa-check-circle"></i> Recognition from Ministry of Defense</li>
+                        <li><i class="fas fa-check-circle"></i> Networking with industry experts</li>
+                        <li><i class="fas fa-check-circle"></i> Implementation-focused research</li>
+                    </ul>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="designation" class="required">Designation</label>
-                        <select id="designation" name="designation" required>
-                            <option value="">Select Designation</option>
-                            <option value="student">Student</option>
-                            <option value="professional">Professional</option>
-                            <option value="academician">Academician</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="telephone" class="required">Telephone</label>
-                        <input type="tel" id="telephone" name="telephone" required>
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="whatsapp" class="required">WhatsApp Number</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" required>
-                        <div class="error-message"></div>
-                    </div>
+                <div class="overview-image">
+                    <img src="/images/Cyber Veda Manthan 2.png" alt="Conference Overview" class="img-fluid">
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="telegram">Telegram ID</label>
-                        <input type="text" id="telegram" name="telegram">
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="required">Email</label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount (₹)</label>
-                        <input type="text" id="amount" name="amount" value="5,000.00" readonly>
-                    </div>
-                </div>
-
-                <div class="button-container">
-                    <button type="submit" class="subbtn primary-btn" id="subbtn">
-                        Register & Submit Paper
-                        <div class="spinner" id="submitSpinner"></div>
-                    </button>
-                    <a href="/index.html" class="subbtn secondary-btn">
-                        Return
-                    </a>
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        const API_URL = 'http://127.0.0.1:5000/api/registrations';
+    <!-- Conference Themes -->
+    <section id="themes" class="section themes-section">
+        <div class="container">
+            <h2 class="section-title">Conference Themes</h2>
+            <div class="themes-grid">
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="theme-content">
+                        <h3>About UPSIFS</h3>
+                <p>UPSIFS is a premier initiative designed to foster innovation and develop future-ready skills, particularly in cybersecurity and defense technology.</p>
+                
+            </div>
+            <div class="theme-card">
+                <div class="theme-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="theme-content">
+<h3>  Open Source Intelligence </h3>
+                        <p>Explore innovative methodologies for collecting and analyzing publicly available information for intelligence purposes.</p>
+                        <div class="theme-details">
+                            <h4>Focus Areas:</h4>
+                            <ul>
+                                <li>Data verification techniques</li>
+                                <li>Source credibility assessment</li>
+                                <li>OSINT process automation</li>
+                                <li>Legal and ethical frameworks</li>
+                            </ul>
+                            <div class="theme-requirements">
+                                <span class="requirement-tag">Prototype Required</span>
+                                <span class="requirement-tag">Documentation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        const validationRules = {
-            telephone: {
-                pattern: /^\d{10}$/,
-                message: 'Please enter a valid 10-digit number'
-            },
-            whatsapp: {
-                pattern: /^\d{10}$/,
-                message: 'Please enter a valid 10-digit number'
-            },
-            email: {
-                pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
-                message: 'Please enter a valid email address'
-            }
-        };
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="theme-content">
+                        <h3>Cognitive Warfare</h3>
+                        <p>Advanced research in psychological and technological aspects of cognitive warfare and countermeasures.</p>
+                        <div class="theme-details">
+                            <h4>Focus Areas:</h4>
+                            <ul>
+                                <li>Influence operations detection</li>
+                                <li>Psychological resilience</li>
+                                <li>AI in cognitive warfare</li>
+                                <li>Defense strategies</li>
+                            </ul>
+                            <div class="theme-requirements">
+                                <span class="requirement-tag">System Demo</span>
+                                <span class="requirement-tag">Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        function validateField(field) {
-            const value = field.value.trim();
-            const errorDiv = field.parentElement.querySelector('.error-message');
-            let isValid = true;
-            let errorMessage = '';
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="theme-content">
+                        <h3>Bot Detection</h3>
+                        <p>Machine learning approaches for detecting and mitigating automated accounts on social platforms.</p>
+                        <div class="theme-details">
+                            <h4>Focus Areas:</h4>
+                            <ul>
+                                <li>Behavioral analysis</li>
+                                <li>Network patterns</li>
+                                <li>Real-time monitoring</li>
+                                <li>Scalable solutions</li>
+                            </ul>
+                            <div class="theme-requirements">
+                                <span class="requirement-tag">ML Model</span>
+                                <span class="requirement-tag">Performance Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            if (field.hasAttribute('required') && !value) {
-                isValid = false;
-                errorMessage = 'This field is required';
-            }
-            else if (value && validationRules[field.name]) {
-                isValid = validationRules[field.name].pattern.test(value);
-                if (!isValid) {
-                    errorMessage = validationRules[field.name].message;
-                }
-            }
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="theme-content">
+                        <h3>Deepfake Detection</h3>
+                        <p>Cutting-edge approaches to detecting synthetic media using advanced neural architectures.</p>
+                        <div class="theme-details">
+                            <h4>Focus Areas:</h4>
+                            <ul>
+                                <li>Neural network models</li>
+                                <li>Temporal analysis</li>
+                                <li>Biometric verification</li>
+                                <li>Real-time detection</li>
+                            </ul>
+                            <div class="theme-requirements">
+                                <span class="requirement-tag">Working Model</span>
+                                <span class="requirement-tag">Dataset Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            field.classList.toggle('error', !isValid);
-            if (errorDiv) {
-                errorDiv.textContent = errorMessage;
-                errorDiv.classList.toggle('visible', !isValid);
-            }
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="theme-content">
+                        <h3>Crypto Investigation</h3>
+                        <p>Advanced methods for investigating cryptocurrency transactions and related criminal activities.</p>
+                        <div class="theme-details">
+                            <h4>Focus Areas:</h4>
+                            <ul>
+                                <li>Blockchain analysis</li>
+                                <li>Transaction tracking</li>
+                                <li>Pattern recognition</li>
+                                <li>Regulatory compliance</li>
+                            </ul>
+                            <div class="theme-requirements">
+                                <span class="requirement-tag">Tool Development</span>
+                                <span class="requirement-tag">Case Studies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            return isValid;
-        }
+    <!-- Paper Requirements -->
+    <section id="requirements" class="section requirements-section">
+        <div class="container">
+            <h2 class="section-title">Submission Requirements</h2>
+            <div class="requirements-grid">
+                <div class="requirement-box">
+                    <div class="requirement-header">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Paper Format</h3>
+                    </div>
+                    <ul class="requirement-list">
+                        <li>3,000 - 5,000 words length</li>
+                        <li>IEEE conference format</li>
+                        <li>Double-column layout</li>
+                        <li>10-point font size</li>
+                        <li>PDF file submission</li>
+                    </ul>
+                </div>
 
-        function formatPhoneNumber(input) {
-            input.value = input.value.replace(/\D/g, '').slice(0, 10);
-        }
+                <div class="requirement-box">
+                    <div class="requirement-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Implementation</h3>
+                    </div>
+                    <ul class="requirement-list">
+                        <li>Working prototype/model</li>
+                        <li>Source code documentation</li>
+                        <li>Setup instructions</li>
+                        <li>Performance metrics</li>
+                        <li>Testing results</li>
+                    </ul>
+                </div>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('registrationForm');
-            const submitBtn = document.getElementById('subbtn');
-            const spinner = document.getElementById('submitSpinner');
+                <div class="requirement-box">
+                    <div class="requirement-header">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Documentation</h3>
+                    </div>
+                    <ul class="requirement-list">
+                        <li>Plagiarism report</li>
+                        <li>Author declaration</li>
+                        <li>Copyright form</li>
+                        <li>Research methodology</li>
+                        <li>Result analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            form.querySelectorAll('input, select').forEach(field => {
-                field.addEventListener('blur', () => validateField(field));
-                field.addEventListener('input', () => {
-                    if (field.classList.contains('error')) {
-                        validateField(field);
-                    }
-                });
+    <!-- Timeline Section -->
+    <section id="dates" class="section timeline-section">
+        <div class="container">
+            <h2 class="section-title">Important Dates</h2>
+            <div class="timeline">
+                <div class="timeline-event">
+                    <div class="event-date">
+                        <span class="date">26</span>
+                        <span class="month">JAN</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Call for Papers Launch</h3>
+                        <p>Official announcement and guidelines release</p>
+                    </div>
+                </div>
 
-                if (field.type === 'tel') {
-                    field.addEventListener('input', () => formatPhoneNumber(field));
-                }
-            });
+                <div class="timeline-event">
+                    <div class="event-date">
+                        <span class="date">20</span>
+                        <span class="month">FEB</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Submission Deadline</h3>
+                        <p>Final date for paper submissions</p>
+                    </div>
+                </div>
 
-            form.onsubmit = async (e) => {
-                e.preventDefault();
-                e.stopPropagation();
+                <div class="timeline-event">
+                    <div class="event-date">
+                        <span class="date">3</span>
+                        <span class="month">MAR</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Acceptance Notification</h3>
+                        <p>Results and revision requirements</p>
+                    </div>
+                </div>
 
-                let isValid = true;
-                form.querySelectorAll('input, select').forEach(field => {
-                    if (!validateField(field)) {
-                        isValid = false;
-                    }
-                });
+                <div class="timeline-event">
+                    <div class="event-date">
+                        <span class="date">10</span>
+                        <span class="month">MAR</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Camera-Ready Submission</h3>
+                        <p>Final paper submission</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="event-date">
+                        <span class="date">17-18 </span>
+                        <span class="month">MAR</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Conference Dates</h3>
+                        <p>Prize Distribution </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                if (!isValid) {
-                    return false;
-                }
+    <!-- Awards Section -->
+    <section id="awards" class="section awards-section">
+        <div class="container">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <div class="awards-grid">
+                <div class="award-card primary">
+                    <div class="award-medal">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>First Prize</h3>
+                    <div class="prize-amount">₹75,000</div>
+                    <ul class="award-benefits">
+                        <li>Certificate from Minister of Defense</li>
+                        <li>Publication opportunity</li>
+                        <li>Conference presentation</li>
+                    </ul>
+                </div>
 
-                submitBtn.disabled = true;
-                spinner.style.display = 'block';
+                <div class="award-card secondary">
+                    <div class="award-medal">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Second Prize</h3>
+                    <div class="prize-amount">₹50,000</div>
+                    <ul class="award-benefits">
+                        <li>Certificate from Minister of Defense</li>
+                        <li>Publication consideration</li>
+                        <li>Conference presentation</li>
+                    </ul>
+                </div>
 
-                try {
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData);
+                <div class="award-card tertiary">
+                    <div class="award-medal">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Third Prize</h3>
+                    <div class="prize-amount">₹25,000</div>
+                    <ul class="award-benefits">
+                        <li>Certificate from Minister of Defense</li>
+                        <li>Publication consideration</li>
+                        <li>Conference presentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    // Prepare data for API
-                    const apiData = {
-                        formType: 'call_for_paper',
-                        firstName: data.firstName,
-                        middleName: data.middleName,
-                        lastName: data.lastName,
-                        email: data.email,
-                        phone: data.telephone,
-                        whatsapp: data.whatsapp,
-                        telegram_id: data.telegram,
-                        designation: data.designation,
-                        amount: parseFloat(data.amount.replace(/[^0-9.]/g, ''))
-                    };
+    <footer class="footer">
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 97111 47900</p>
+                <p><i class="fa-brands fa-whatsapp"></i> +91 89397 32808</p>
+                <p><i class="fas fa-envelope"></i> cyberveda@upsifs.ac.in</p>
+                <p><i class="fas fa-envelope"></i> mentor@cybervidyapeeth.in</p>
+                <p><i class="fas fa-map-marker-alt"></i> Uttar Pradesh, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li> <a href="index.html" class="nav-link">Home</a></li>
+                   <li> <a href="#overview" class="nav-link">Overview</a></li>
+                   <li> <a href="#themes" class="nav-link">Themes</a></li>
+                    <li><a href="#requirements" class="nav-link">Requirements</a></li>
+                   <li> <a href="#dates" class="nav-link">Important Dates</a></li>
+                    <li><a href="#awards" class="nav-link">Awards</a></li>
+                
+                </ul>
+            </div>
+            <div class="footer-section">
+            
+                <h3>Powered by</h3>
+                <div class="power-logos">
+                    <img src="/images/Cybervidyapeeth.png" alt="cybervidyapeeth">
+                    <img src="/images/youth4nation.png" alt="Youth4Nation">
+                    <img src="/images/Abhedi .png" alt="cybervidyapeeth">
+                    <img src="/images/Pivot.png" alt="Pivot">
+                </div>
+            </div>
+        </div>
+        </div>
+            
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UPSIFS. All rights reserved</p>
+        </div>
+    </footer>
 
-                    const response = await fetch(`${API_URL}/paper`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(apiData)
-                    });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.error || 'Registration failed');
-                    }
-
-                    const result = await response.json();
-
-                    if (result.success) {
-                        // Create success message
-                        const successMessage = document.createElement('div');
-                        successMessage.style.cssText = `
-                            position: fixed;
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            background: var(--primary);
-                            color: white;
-                            padding: 2rem;
-                            border-radius: 8px;
-                            text-align: center;
-                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                            z-index: 1000;
-                        `;
-                        successMessage.innerHTML = `
-                            <h2 style="margin-bottom: 1rem;">Registration Successful!</h2>
-                            <p>Thank you for submitting your paper.</p>
-                            <p>You will receive a confirmation email with further instructions.</p>
-                        `;
-                        document.body.appendChild(successMessage);
-                        
-                        // Remove success message and reset form after 3 seconds
-                        setTimeout(() => {
-                            successMessage.remove();
-                            form.reset();
-                            // Reset amount field to default value
-                            document.getElementById('amount').value = '5,000.00';
-                        }, 3000);
-                    } else {
-                        throw new Error('Registration failed');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Show error message to user
-                    const errorMessage = document.createElement('div');
-                    errorMessage.style.cssText = `
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: var(--error-color);
-                        color: white;
-                        padding: 2rem;
-                        border-radius: 8px;
-                        text-align: center;
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                        z-index: 1000;
-                    `;
-                    errorMessage.innerHTML = `
-                        <h2 style="margin-bottom: 1rem;">Registration Failed</h2>
-                        <p>${error.message}</p>
-                        <p>Please try again or contact support if the problem persists.</p>
-                    `;
-                    document.body.appendChild(errorMessage);
-                    
-                    setTimeout(() => {
-                        errorMessage.remove();
-                    }, 3000);
-                } finally {
-                    submitBtn.disabled = false;
-                    spinner.style.display = 'none';
-                }
-
-                return false;
-            };
-        });
-    </script>
+    <script src="js/call.js"></script>
 </body>
 </html>
