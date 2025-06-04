@@ -18,6 +18,15 @@
  }
  
  /* Navbar Styles */
+ .hamburger {
+   display: none;
+ }
+ 
+ @media (max-width: 768px) {
+   .hamburger {
+     display: block;
+   }
+ }
  .navbar {
     display: flex;
     justify-content: space-between;

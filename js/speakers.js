@@ -88,3 +88,81 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
  });
+
+ // JavaScript for Speaker Cards
+function toggleSpeakerDetails(card) {
+    // Check if this card is already expanded
+    const isExpanded = card.classList.contains('expanded');
+    
+    // First, collapse all cards
+    const allCards = document.querySelectorAll('.speaker-card');
+    allCards.forEach(element => {
+        element.classList.remove('expanded');
+    });
+    
+    // If the clicked card wasn't expanded before, expand it
+    if (!isExpanded) {
+        card.classList.add('expanded');
+        
+        // Add expanded class after a short delay to enable animation
+        setTimeout(() => {
+            // Scroll to the card with smooth animation
+            card.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }, 50);
+    }
+}
+
+// Function to handle close button click
+function closeExpandedCard(event) {
+    // Prevent the click from bubbling up to the card
+    event.stopPropagation();
+    
+    // Find the parent card and remove the expanded class
+    const card = event.target.closest('.speaker-card');
+    if (card) {
+        card.classList.remove('expanded');
+    }
+}
+
+// Close expanded card when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.speaker-card')) {
+        const expandedCards = document.querySelectorAll('.speaker-card.expanded');
+        expandedCards.forEach(card => {
+            card.classList.remove('expanded');
+        });
+    }
+});
+
+// Optional: Add keyboard navigation support
+document.addEventListener('keydown', function(event) {
+    // ESC key closes expanded cards
+    if (event.key === 'Escape') {
+        const expandedCards = document.querySelectorAll('.speaker-card.expanded');
+        expandedCards.forEach(card => {
+            card.classList.remove('expanded');
+        });
+    }
+});
+
+// Initialize with proper grid positioning on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const speakersGrid = document.querySelector('.speakers-grid');
+    
+    // Ensure proper layout on window resize
+    window.addEventListener('resize', function() {
+        const expandedCard = document.querySelector('.speaker-card.expanded');
+        if (expandedCard) {
+            // Re-trigger expansion to fix positioning
+            setTimeout(() => {
+                expandedCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 300);
+        }
+    });
+});

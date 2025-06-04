@@ -256,13 +256,30 @@ a:hover {
     border-radius: 12px;
     backdrop-filter: blur(10px);
 }
+.meta-item2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #FF7722;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
 
 .meta-item i {
     color: #FF7722;
     font-size: 1.5rem;
 }
+.meta-item2 i {
+    color: #ffffff;
+    font-size: 1.5rem;}
 
 .meta-item span {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.meta-item2 span {
     color: #FFFFFF;
     font-size: 1.1rem;
     font-weight: 500;

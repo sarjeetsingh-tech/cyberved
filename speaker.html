@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speakers - CyberVedManthan Summit</title>
     <link rel="stylesheet" href="/css/partners.css">
@@ -12,127 +13,284 @@
     <nav class="navbar">
         <div class="nav-left">
             <div class="logo-placeholder1">
-                <img src="images/UPIFS1.png" alt="Logo 1">
+                <img src="/images/UPIFS1.png" alt="Logo 1">
             </div>
+           
         </div>
-
-        <div class="nav-menu">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="#overview" class="nav-link">Overview</a>
-            <a href="#overview" class="nav-link">Call For Paper</a>
-            <a href="#overview" class="nav-link">Hackathon</a>
-            <a href="#overview" class="nav-link">Summit</a>
-            <div class="dropdown">
-                <button class="dropbtn">About <i class="fas fa-chevron-down"></i></button>
-                <div class="dropdown-content">
-                    <a href="#about-us">About Us</a>
-                    <a href="#organizer">About Organizer</a>
-                    <a href="#sponsors">About Sponsors</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="nav-right">
-            <button class="register-btn">Register Now</button>
-            <div class="logo-placeholder">
-                <img src="images/CF.png" alt="Logo 2">
-            </div>
-        </div>
-        <button class="hamburger">
+    
+        <button class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
-    </nav>
-
-    <section class="speakers-section">
-        <h1 class="main-title">Our Distinguished Speakers</h1>
-        
-        <div class="speakers-grid">
-            <!-- Speaker Card 1 -->
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="images/Shri-yogi-adityanath.png" alt="Dr. Rajesh Kumar">
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="speaker-info">
-                    <h2>General Upendra Dwivedi</h2>
-                    <h3>Chief of the Army Staff</h3>
-                    <p class="organization">Indian Army</p>
-                    
+    
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="overview.html" class="nav-link">Overview</a>
+            <a href="call-for-paper.html" class="nav-link">Call For Paper</a>
+            <a href="hackathon.html" class="nav-link">Hackathon</a>
+            <a href="summit.html" class="nav-link">Summit</a>
+            <div class="dropdown">
+                <button class="dropbtn">About <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="speaker.html">About Speakers</a>
+                    <a href="partners.html">About Partners</a>
+                    <a href="#">About Sponsors</a>
                 </div>
             </div>
-
-            <!-- Speaker Card 2 
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="images/speaker2.jpg" alt="Prof. Sarah Johnson">
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="speaker-info">
-                    <h2>Prof. Sarah Johnson</h2>
-                    <h3>Director of Research</h3>
-                    <p class="organization">International Institute of Cyber Security</p>
-                    <p class="bio">Leading researcher in quantum cryptography and AI-driven security systems. Recipient of multiple awards for contributions to cybersecurity education.</p>
-                    <div class="expertise">
-                        <span>Quantum Security</span>
-                        <span>AI Security</span>
-                        <span>Cryptography</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="images/speaker3.jpg" alt="Maj. Gen. Vikram Singh">
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="speaker-info">
-                    <h2>Maj. Gen. Vikram Singh</h2>
-                    <h3>Defense Cyber Operations Head</h3>
-                    <p class="organization">Military Cyber Command</p>
-                    <p class="bio">Expert in military cyber operations and strategic defense planning. Pioneered several cyber defense frameworks for national security.</p>
-                    <div class="expertise">
-                        <span>Military Cyber Ops</span>
-                        <span>Strategic Planning</span>
-                        <span>Defense Systems</span>
-                    </div>
-                </div>
-            </div>
-
-           
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="images/speaker4.jpg" alt="Dr. Maya Patel">
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="speaker-info">
-                    <h2>Dr. Maya Patel</h2>
-                    <h3>Principal Researcher</h3>
-                    <p class="organization">Advanced Cyber Defense Lab</p>
-                    <p class="bio">Specializes in zero-day vulnerability research and threat intelligence. Led multiple critical infrastructure protection projects.</p>
-                    <div class="expertise">
-                        <span>Threat Intelligence</span>
-                        <span>Vulnerability Research</span>
-                        <span>Infrastructure Security</span>
-                    </div>
-                </div>
-            </div>
-        -->
         </div>
-    </section>
+    
+        <div class="nav-right">
+            <a href="summit-registration.html">
+            <button class="register-btn">Register Now</button>
+            </a>
+            <div class="logo-placeholder">
+                <img src="/images/CF.png" alt="Logo 2">
+            </div>
+        </div>
+    </nav>
+  
+
+<!-- HTML Section for Speakers -->
+<!-- HTML Section for Speakers -->
+<section class="speakers-section">
+    <h1 class="main-title">Our Distinguished Speakers</h1>
+    
+    <div class="speakers-grid">
+        <!-- Speaker Card 1 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/LT.GEN-(DR)-R.S.PANWAR.jpg" alt="Lt. Gen. (Dr) R.S. Panwar">
+            </div>
+            <h2 class="speaker-name">Lt. Gen. (Dr) R.S. Panwar</h2>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <h3>Former Commandant</h3>
+                <p class="organization">Military College of Telecommunication Engineering</p>
+                <p class="bio">Lt. Gen. (Dr) R.S. Panwar, a distinguished alumnus of IIT Bombay, served in the Indian Army's Corps of Signals for four decades. He has commanded various formations, including an electronic warfare brigade and an armoured division signal regiment.</p>
+            </div>
+        </div>
+
+        <!-- Speaker Card 2 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Lt.-Gen.(Dr)-Rajesh-Pant.jpg" alt="Lt. Gen. (Dr) Rajesh Pant">
+            </div>
+            <h2 class="speaker-name">Lt. Gen. (Dr) Rajesh Pant</h2>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <h3>Former National Cyber Security Coordinator</h3>
+                <p class="organization">National Security Council, India</p>
+                <p class="bio">Lt. Gen. (Dr) Rajesh Pant, with a Ph.D. in Information Security Metrics, served as the National Cyber Security Coordinator in the National Security Council of India. He has over 41 years of experience in the Indian Army's Signals Corps and has been honored thrice by the President of India for distinguished service.</p>
+            </div>
+        </div>
+
+        <!-- Speaker Card 3 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/AIR-VICE-MARSHALL-(DR)-DEVESH-VATSA.jpg" alt="Air Vice Marshal (Dr) Devesh Vatsa">
+            </div>
+            <h2 class="speaker-name">Air Vice Marshal (Dr) Devesh Vatsa</h2>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <h3>Former Commandant</h3>
+                <p class="organization">Aviation Software Development Institute, Indian Air Force</p>
+                <p class="bio">Air Vice Marshal (Dr) Devesh Vatsa, VSM (Retd), is a former Commandant of the Aviation Software Development Institute of the Indian Air Force. He has also served as Assistant Chief of Staff (Communication) and is currently an advisor on Cyber Security and Critical Technologies at DSCI, NASSCOM.</p>
+            </div>
+        </div>
+
+        <!-- Speaker Card 4 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/PROF.-(DR)-GANESH-RAMAKRISHNAN.jpg" alt="Prof. (Dr) Ganesh Ramakrishnan">
+            </div>
+            <h2 class="speaker-name">Prof. (Dr) Ganesh Ramakrishnan</h2>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <h3>Institute Chair Professor</h3>
+                <p class="organization">Indian Institute of Technology Bombay</p>
+                <p class="bio">Prof. (Dr) Ganesh Ramakrishnan is an Institute Chair Professor in the Department of Computer Science and Engineering at IIT Bombay. His research interests include machine learning, natural language processing, and AI in resource-constrained environments.</p>
+            </div>
+        </div>
+
+        <!-- Speaker Card 5 -->
+        
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Dr.-Alok-Vijayant.jpg" alt="Dr. Alok Vijayant">
+            </div>
+            <h2 class="speaker-name">Dr. Alok Vijayant</h2>
+            <h3>Founder</h3>
+            <p class="organization">SciRoIT Technologies</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Dr. Alok Vijayant is the founder of SciRoIT Technologies, a firm specializing in innovative solutions for the digital domain. With an MBA from FMS, a CEH certification, and advanced diplomas in Cyber Security and Mandarin, Dr. Vijayant has an extensive background in cyber operations. He previously served as Director of Cyber Operations for the Government of India, where he played a pivotal role in shaping national cybersecurity strategies. At SciRoIT Technologies, he focuses on developing cutting-edge tools like INFULATOR, designed for advanced information management and operations. Dr. Vijayant is also a thought leader, contributing to various podcasts and publications on cybersecurity and hybrid warfare. </p>
+            </div>
+        </div>
+        
+      
+       
+        
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Major-General-Manjit-Singh.jpg" alt="Lt Gen. (Retd.) Manjit Singh">
+            </div>
+            <h2 class="speaker-name">Lt Gen. (Retd.) Manjit Singh</h2>
+            <h3>Former National Cyber Security Coordinator</h3>
+            <p class="organization">Prime Minister's Office, Government of India</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Lt Gen. (Retd.) Manjit Singh served as the National Cyber Security Coordinator in the Prime Minister's Office, Government of India. With a distinguished military career spanning several decades, he has been instrumental in shaping India's cyber defense policies. As the National Cyber Security Coordinator, he oversaw the formulation and implementation of strategies to protect the nation's critical information infrastructure. Post-retirement, Lt Gen. Singh continues to contribute to the field through advisory roles and as a speaker at various cybersecurity forums, sharing his extensive knowledge on national security and cyber warfare.</p>
+            </div>
+        </div>
+        
+
+        <!-- Speaker Card 6 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/SHRI-SHIV-KUMAR-PANDEY,-GROUP-CISO-ADANI.jpg" alt="Shri Shiv Kumar Pandey">
+            </div>
+            <h2 class="speaker-name">Shri Shiv Kumar Pandey</h2>
+            <h3>Group Chief Information Security Officer (CISO)</h3>
+            <p class="organization">Adani Group</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Shri Shiv Kumar Pandey, with over 23 years of leadership experience across diverse industries, serves as the Group Chief Information Security Officer (CISO) at Adani Group. He leads strategic cybersecurity initiatives, ensuring the security of both IT and OT systems.</p>
+            </div>
+        </div>
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/AVM-RANJAN.jpg" alt="Air Vice Marshal Rajiva Ranjan VM (Retd)">
+            </div>
+            <h2 class="speaker-name">Air Vice Marshal Rajiva Ranjan VM (Retd)</h2>
+            <h3>Former Assistant Chief of Integrated Defence Staff (ICT)</h3>
+            <p class="organization">Indian Air Force</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Commissioned in 1987, AVM Rajiva Ranjan is a distinguished fighter pilot with nearly 3,850 accident-free flying hours. A Fighter Combat Leader and Qualified Flying Instructor, he served in key positions including Assistant Chief of Air Staff Operations (Space) and Air Attaché in Afghanistan. As the first Flight Commander of MiG-21 (Bison), he established its operational protocols. He is a recipient of the Vayu Sena Medal and two Chief of Air Staff Commendations for his exceptional service to the Indian Air Force.</p>
+            </div>
+        </div>
+        <!-- Speaker Card 7 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/MAJOR-GENERAL-PAWAN-ANAND,-USI-INDIA.jpg" alt="Major General Pawan Anand">
+            </div>
+            <h2 class="speaker-name">Major General (Dr) Pawan Anand</h2>
+            <h3>Director, Atma Nirbhar Bharat Initiative</h3>
+            <p class="organization">United Service Institution of India</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">He is a distinguished scholar-soldier with 36 years of service in the Indian Army. He has commanded an Armoured Engineer Regiment and an Engineer Brigade in a Strike Corps. Currently, he is the Director of the Atma Nirbhar Bharat Initiative at the United Service Institution (USI) of India, focusing on the intersection of geopolitics, emerging technologies, and defense industry.</p>
+            </div>
+        </div>
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Maj-Gen-PK-Mallick,-VSM -Retd).jpg" alt="Maj Gen PK Mallick, VSM (Retd)">
+            </div>
+            <h2 class="speaker-name">Maj Gen PK Mallick, VSM (Retd)</h2>
+            <h3>Consultant</h3>
+            <p class="organization">Vivekananda International Foundation</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Maj Gen PK Mallick, VSM (Retd) is a distinguished military professional with extensive experience in cyber warfare, electronic warfare, and signals intelligence. Commissioned into the Corps of Signals of the Indian Army, he holds a B.E. in Electronics and Telecommunication Engineering from B.E. College, Shibpur, and an M.Tech from IIT Kharagpur. Throughout his career, Maj Gen Mallick has held various command, staff, and instructional positions, including Senior Directing Staff (Army) at the National Defence College, New Delhi. Post-retirement, he serves as a consultant at the Vivekananda International Foundation, contributing to research on national security and strategic affairs. He is also an accomplished author, having published numerous papers on contemporary security issues.</p>
+            </div>
+        </div>
+        
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Saptarshi-Basu.jpg" alt="Saptarshi Basu">
+            </div>
+            <h2 class="speaker-name">Saptarshi Basu</h2>
+            
+
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Mr. Saptarshi Basu is a distinguished Marine Engineer, Naval Architect, and researcher in cognitive warfare with over 25 years of experience in maritime and engineering sectors. A graduate from IMU-Kolkata campus, he holds MEO Class 1 certification, PGDNA in Naval Architecture from Mumbai University, and an MBA in Shipping Logistics Management. His expertise spans ship building, marine engineering, and strategic project management. As a certified Insurance and Quality Auditor, diving supervisor, and Chief Engineer, he has led vessel management and underwater operations. His recent accomplishments include serving as technical head for multiple shipping companies and spearheading India's first underwater salvage operation. His research in cognitive warfare has strengthened maritime security protocols and defensive strategies.</p>
+            </div>
+        </div>
+        
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Dr.-Subba-Rao-Pavuluri.jpg" alt="Dr. Subba Rao Pavuluri">
+            </div>
+            <h2 class="speaker-name">Dr. Subba Rao Pavuluri</h2>
+            <h3>Chairman & Managing Director</h3>
+            <p class="organization">Ananth Technologies Ltd.</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Dr. Subba Rao Pavuluri is the Chairman and Managing Director of Ananth Technologies Ltd., a leading aerospace and defense company in India. With over four decades of experience in the Indian Space Program, Dr. Pavuluri has been a pioneer in private sector participation in high-technology areas. He founded Ananth Technologies in 1992, which has since contributed to 88 satellites and 67 launch vehicles for the Indian Space Research Organisation (ISRO). Under his leadership, the company has established facilities in Hyderabad, Bangalore, and Thiruvananthapuram, employing over 1,500 skilled professionals. Dr. Pavuluri's vision has been instrumental in advancing India's capabilities in space technology and manufacturing. </p>
+            </div>
+        </div>
+        
+     <!--  <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/SK-Mallick.jpg" alt="Shri S.K. Mallick">
+            </div>
+            <h2 class="speaker-name">Shri S.K. Mallick</h2>
+            <h3>Executive Director (CNS-O&M)</h3>
+            <p class="organization">Airports Authority of India</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Shri S.K. Mallick serves as the Executive Director of Communication, Navigation, and Surveillance Operations & Maintenance (CNS-O&M) at the Airports Authority of India (AAI). In this capacity, he oversees the implementation and maintenance of critical air traffic management systems across the nation's airports. With a career spanning several decades in aviation, Shri Mallick has been instrumental in modernizing India's air navigation services, ensuring they meet international standards. His leadership has facilitated the integration of advanced technologies, enhancing both the safety and efficiency of air travel in the region. Shri Mallick's commitment to excellence has significantly contributed to AAI's mission of providing safe, efficient, and sustainable air navigation services. </p>
+            </div>
+        </div>
+        --> 
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Anurag-Gupta.jpg" alt="Shri Anurag Gupta">
+            </div>
+            <h2 class="speaker-name">Shri Anurag Gupta</h2>
+            <h3>Director General of Police</h3>
+            <p class="organization">Jharkhand Police</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Shri Anurag Gupta, a 1990-batch Indian Police Service (IPS) officer, currently serves as the Director General of Police (DGP) for Jharkhand. Throughout his career, he has held several key positions, including Director General of the Criminal Investigation Department (CID) and head of the Anti-Corruption Bureau (ACB) in Jharkhand. In July 2024, he was appointed as the officiating DGP, and by February 2025, he was confirmed as the regular DGP of the state. His tenure has been marked by both commendations and controversies. Notably, during the 2019 Lok Sabha elections, he was relieved from his duties as Additional Director General (Special Branch) following allegations of biased conduct. Despite such challenges, Shri Gupta has been recognized for his commitment to law enforcement and his efforts in enhancing the state's policing infrastructure. His leadership continues to shape the strategic direction of Jharkhand's police force. </p>
+            </div>
+        </div>
+        
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Kundan-Krishnan.jpg" alt="Shri Kundan Krishnan">
+            </div>
+            <h2 class="speaker-name">Shri Kundan Krishnan</h2>
+            <h3>Additional Director General of Police (Headquarters)</h3>
+            <p class="organization">Bihar Police</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Shri Kundan Krishnan is a 1994-batch Indian Police Service (IPS) officer of the Bihar cadre. In December 2024, after returning from central deputation, he was appointed as the Additional Director General of Police (Headquarters) in Bihar. His extensive career includes significant roles such as serving in the Central Industrial Security Force (CISF) as an Additional Director General. Upon his repatriation to the Bihar cadre, he was entrusted with overseeing the police headquarters, reflecting the state government's confidence in his leadership and administrative capabilities. In addition to his role as ADG (Headquarters), Shri Krishnan has been assigned the additional responsibility of heading the Special Task Force (STF), focusing on organized crime and counter-terrorism operations. His diverse experience at both state and central levels underscores his commitment to maintaining law and order and addressing complex security challenges. </p>
+            </div>
+        </div>
+        
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/Dr-Kamakoti-Veezhinathan.jpg" alt="Dr. Kamakoti Veezhinathan">
+            </div>
+            <h2 class="speaker-name">Dr. Kamakoti Veezhinathan</h2>
+            <h3>Director</h3>
+            <p class="organization">Indian Institute of Technology Madras</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Dr. Kamakoti Veezhinathan is the Director of the Indian Institute of Technology (IIT) Madras, having assumed the role in January 2022. He joined the institute's faculty in 2001 after earning his M.S. and Ph.D. degrees in Computer Science and Engineering from IIT Madras. Dr. Veezhinathan specializes in Computer Architecture, Information Security, and VLSI Design. He leads the Microprocessor Development Program and the Information Security Education and Awareness Program at the institute, both funded by the Ministry of Electronics and Information Technology, Government of India. Additionally, he serves on the National Security Advisory Board and has chaired the Artificial Intelligence Task Force constituted by the Ministry of Commerce and Industry. Throughout his tenure at IIT Madras, Dr. Veezhinathan has held various administrative positions, including Chairman of the Joint Entrance Examination (JEE) and Associate Dean of Industrial Consultancy and Sponsored Research. His extensive research contributions include over 150 publications in international journals and conferences. </p>
+            </div>
+        </div>
+        
+       
+        
+        <!-- Speaker Card 8 -->
+        <div class="speaker-card" onclick="toggleSpeakerDetails(this)">
+            <div class="speaker-avatar">
+                <img src="images/MR.-JUSTIN-BASSI,-ASPI.jpg" alt="Mr. Justin Bassi">
+            </div>
+            <h2 class="speaker-name">Mr. Justin Bassi</h2>
+            <h3>Executive Director</h3>
+            <p class="organization">Australian Strategic Policy Institute</p>
+            <div class="speaker-details">
+                <div class="close-btn" onclick="closeExpandedCard(event)"></div>
+                <p class="bio">Mr. Justin Bassi is the Executive Director of the Australian Strategic Policy Institute (ASPI). With a background in national security and intelligence, he leads ASPI's efforts in providing independent, policy-relevant research and analysis to inform Australia's strategic and defense policy choices.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <footer class="footer">
         <div class="footer-content">
@@ -150,11 +308,10 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#overview">Home</a></li>
-                    <li><a href="#objectives">Objectives</a></li>
-                    <li><a href="#structure">Structure</a></li>
-                    <li><a href="#evaluation">Evaluation</a></li>
-                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="overview.html">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="speaker.html">Our Speakers</a></li>
                 </ul>
             </div>
 
@@ -163,8 +320,8 @@
                 <div class="power-logos">
                     <img src="images/Cybervidyapeeth.png" alt="Cybervidyapeeth">
                     <img src="images/youth4nation.png" alt="Youth4Nation">
-                    <img src="images/Abhedi.png" alt="Abhedi">
-                    <img src="images/pivot.png" alt="Pivot">
+                    <img src="images/Abhedi .png" alt="Abhedi">
+                    <img src="images/Pivot.png" alt="Pivot">
                 </div>
             </div>
         </div>

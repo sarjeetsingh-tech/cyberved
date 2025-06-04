@@ -50,7 +50,75 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pause on hover
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slider.addEventListener('mouseleave', startAutoplay);
+
+    // Popup Notice for Event Postponement
+    // Create popup elements
+    const popupOverlay = document.createElement('div');
+    popupOverlay.className = 'popup-overlay';
+    
+    const popupContainer = document.createElement('div');
+    popupContainer.className = 'popup-container';
+    
+    const popupContent = document.createElement('div');
+    popupContent.className = 'popup-content';
+    
+    // Add popup content
+    popupContent.innerHTML = `
+        <div class="popup-header">
+            <h2>⚠️ Important Notice: Events Postponed ⚠️</h2>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <p>Dear Participant,</p>
+            <p>Greetings from UPSIFS, Lucknow!</p>
+            <p>We are grateful for your active interest and response to participate and contribute in the Hackathon, Summit, and call for papers scheduled for March 16-21, 2025.</p>
+            <p>We deeply regret to inform you that due to certain unavoidable reasons the programs have been postponed and we shall communicate with you soon with the revised dates.</p>
+            <p>Stay connected.</p>
+            <p>Thank you.</p>
+            <p class="popup-signature">Best Regards,<br>UPSIFS Team</p>
+        </div>
+    `;
+    
+    // Assemble popup
+    popupContainer.appendChild(popupContent);
+    popupOverlay.appendChild(popupContainer);
+    document.body.appendChild(popupOverlay);
+    
+    // Show popup after a short delay
+    setTimeout(() => {
+        popupOverlay.classList.add('active');
+    }, 800);
+    
+    // Store popup state in session storage
+    const hasSeenPopup = sessionStorage.getItem('hasSeenPostponementPopup');
+    
+    if (!hasSeenPopup) {
+        // First time visitor in this session
+        popupOverlay.classList.add('active');
+        // Mark that they've seen it
+        sessionStorage.setItem('hasSeenPostponementPopup', 'true');
+    }
+    
+    // Close popup when clicking the close button
+    const closeButton = popupContent.querySelector('.popup-close');
+    closeButton.addEventListener('click', () => {
+        popupOverlay.classList.remove('active');
+        setTimeout(() => {
+            popupOverlay.style.display = 'none';
+        }, 400);
+    });
+    
+    // Close popup when clicking outside
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.classList.remove('active');
+            setTimeout(() => {
+                popupOverlay.style.display = 'none';
+            }, 400);
+        }
+    });
 });
+
 function toggleMenu() {
     document.querySelector('.hamburger').classList.toggle('active');
     document.querySelector('.nav-menu').classList.toggle('active');

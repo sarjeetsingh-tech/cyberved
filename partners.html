@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organizers - CyberVedManthan Summit</title>
     <link rel="stylesheet" href="/css/partners.css">
@@ -11,32 +12,39 @@
     <nav class="navbar">
         <div class="nav-left">
             <div class="logo-placeholder1">
-                <img src="images/UPIFS1.png" alt="Logo 1">
+                <img src="/images/UPIFS1.png" alt="Logo 1">
             </div>
+           
         </div>
-
-        <button class="hamburger">
+    
+        <button class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
-
+    
         <div class="nav-menu">
-            <a href="#overview" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="overview.html" class="nav-link">Overview</a>
+            <a href="call-for-paper.html" class="nav-link">Call For Paper</a>
+            <a href="hackathon.html" class="nav-link">Hackathon</a>
+            <a href="summit.html" class="nav-link">Summit</a>
             <div class="dropdown">
                 <button class="dropbtn">About <i class="fas fa-chevron-down"></i></button>
                 <div class="dropdown-content">
-                    <a href="#about-us">About Us</a>
-                    <a href="#organizer">About Organizer</a>
-                    <a href="#sponsors">About Sponsors</a>
+                    <a href="speaker.html">About Speakers</a>
+                    <a href="partners.html">Partners</a>
+                    <a href="#">About Sponsors</a>
                 </div>
             </div>
         </div>
-
+    
         <div class="nav-right">
+            <a href="summit-registration.html">
             <button class="register-btn">Register Now</button>
+            </a>
             <div class="logo-placeholder">
-                <img src="images/CF.png" alt="Logo 2">
+                <img src="/images/CF.png" alt="Logo 2">
             </div>
         </div>
     </nav>
@@ -121,11 +129,10 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#overview">Home</a></li>
-                    <li><a href="#objectives">Objectives</a></li>
-                    <li><a href="#structure">Structure</a></li>
-                    <li><a href="#evaluation">Evaluation</a></li>
-                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="overview.html">About Us</a></li>
+                    <li><a href="#programs">Sponsors</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="speaker.html">Our Speakers</a></li>
                 </ul>
             </div>
 
@@ -134,8 +141,8 @@
                 <div class="power-logos">
                     <img src="images/Cybervidyapeeth.png" alt="Cybervidyapeeth">
                     <img src="images/youth4nation.png" alt="Youth4Nation">
-                    <img src="images/Abhedi.png" alt="Abhedi">
-                    <img src="images/pivot.png" alt="Pivot">
+                    <img src="images/Abhedi .png" alt="Abhedi">
+                    <img src="images/Pivot.png" alt="Pivot">
                 </div>
             </div>
         </div>
@@ -145,5 +152,6 @@
         </div>
     </footer>
     <script src="/js/partnes.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>
