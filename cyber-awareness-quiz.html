@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Awareness Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0033;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .quiz-container {
+            background-color: rgba(20, 10, 50, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: rgb(204, 0, 0);
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #7a30ff;
+            margin-bottom: 5px;
+        }
+        .logo-container {
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            filter: drop-shadow(0 0 8px rgba(8, 0, 55, 0.6));
+            height: 80px;
+        }
+        .progress-container {
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .progress-bar {
+            background-color: #e91e63;
+        }
+        .question-counter {
+            text-align: right;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: #ffcc00;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .option-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .option-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .option-btn.selected {
+            background-color: rgba(122, 48, 255, 0.3);
+            border-color: #7a30ff;
+            box-shadow: 0 0 10px rgba(122, 48, 255, 0.5);
+        }
+        .btn-primary {
+            background-color: #e91e63;
+            border: none;
+            padding: 10px 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .btn-primary:hover {
+            background-color: #c2185b;
+        }
+        .btn-primary:disabled {
+            background-color: #6c757d;
+            opacity: 0.65;
+        }
+        .result-container {
+            text-align: center;
+            display: none;
+        }
+        .result-title {
+            font-size: 2rem;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        .score {
+            font-size: 3rem;
+            color: #ffcc00;
+            margin-bottom: 30px;
+        }
+        .result-message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .certificate-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .certificate-btn:hover {
+            background-color: #218838;
+        }
+        .certificate-btn:disabled {
+            background-color: #6c757d;
+            opacity: 0.65;
+        }
+        .spinner-border {
+            display: none;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .quiz-container {
+                padding: 20px 15px;
+                margin-top: 20px;
+            }
+            .question {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="header">
+                    <div class="logo-container">
+                        <img src="image.png" alt="Logo" class="img-fluid logo">
+                    </div>
+                    <h1>Cyber Awareness Quiz</h1>
+                </div>
+                
+                <!-- Quiz Container -->
+                <div id="quiz-container" class="quiz-container">
+                    <div class="progress-container">
+                        <div class="question-counter" id="question-counter">Question 1/10</div>
+                        <div class="progress">
+                            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="question" class="question">Loading question...</div>
+                    
+                    <div id="options-container" class="options-container">
+                        <!-- Options will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button id="next-button" class="btn btn-primary" disabled>Next Question</button>
+                    </div>
+                </div>
+                
+                <!-- Results Container -->
+                <div id="result-container" class="result-container quiz-container">
+                    <h2 class="result-title">Quiz Completed!</h2>
+                    <p>Your Score:</p>
+                    <div id="score" class="score">0/10</div>
+                    <p id="result-message" class="result-message">Processing your results...</p>
+                    
+                    <div class="spinner-border text-light" id="loading-spinner" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button id="get-certificate" class="certificate-btn" disabled>Get Your Certificate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if user is authenticated
+        const token = sessionStorage.getItem('cyberTestToken');
+        if (!token) {
+            // Redirect to registration page if no token found
+            window.location.href = 'cyberawareness-test-registration.html';
+            return;
+        }
+
+        // Quiz questions
+        const quizQuestions = [
+            {
+                question: "Case Study: You receive a video call from your CEO requesting an urgent wire transfer of funds to a new vendor. The CEO appears on video and sounds authentic, but the request seems unusual. What should be your immediate response?",
+                options: [
+                    "Process the transfer immediately since the CEO is requesting it",
+                    "Ask for written confirmation via email before proceeding",
+                    "Verify the request through an independent communication channel using known contact information",
+                    "Delay the request until the next business day"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: An employee receives an email appearing to be from the IT department asking them to click a link to update their password due to a 'security breach.' The email creates urgency by stating the account will be locked in 2 hours. What is the best course of action?",
+                options: [
+                    "Click the link immediately to prevent account lockout",
+                    "Forward the email to colleagues to warn them",
+                    "Contact IT department directly through known channels to verify the request",
+                    "Change the password using the provided link but use a different password"
+                ],
+                correctAnswer: 2
+            }
+            ,
+            {
+                question: "Case Study: During a video conference call, you notice the speaker's lip movements don't perfectly sync with their voice, and there are occasional pixelation issues around their face. What might this indicate?",
+                options: [
+                    "Poor internet connection affecting video quality",
+                    "Outdated video conferencing software",
+                    "Potential deepfake technology being used",
+                    "Normal technical glitches in video calls"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You find a USB drive in the parking lot labeled 'Employee Salary Information.' Your curiosity is piqued about whether your salary information might be on it. What should you do?",
+                options: [
+                    "Insert it into your work computer to check the contents",
+                    "Take it home and check it on your personal computer",
+                    "Report it to the IT security team without inserting it anywhere",
+                    "Ask colleagues if they recognize the USB drive"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You receive a text message claiming to be from your bank, stating there's suspicious activity on your account and asking you to click a link to verify your identity immediately. How should you respond?",
+                options: [
+                    "Click the link and provide the requested information",
+                    "Call the bank using the phone number on your bank card or statement",
+                    "Reply to the text message asking for more details",
+                    "Forward the message to friends to warn them"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: An attacker calls your office pretending to be from the IT support team, claiming there's a security issue with your computer and asking for your login credentials to 'fix the problem remotely.' What type of attack is this?",
+                options: [
+                    "Phishing",
+                    "Vishing",
+                    "Smishing",
+                    "Malware attack"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're working from home and need to access sensitive client data. Your home Wi-Fi is unsecured, but you need the information urgently for a client meeting. What is the safest approach?",
+                options: [
+                    "Access the data directly through your home Wi-Fi since it's urgent",
+                    "Use your mobile hotspot and VPN connection to access the data",
+                    "Wait until you're back in the office to access the information",
+                    "Use a public Wi-Fi at a nearby café instead"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You notice a colleague has left their computer unlocked with client information visible on the screen while they went to lunch. What should you do?",
+                options: [
+                    "Look at the information since it's already visible",
+                    "Lock their computer for them",
+                    "Leave a note reminding them about security policies",
+                    "Report the incident to your supervisor or security team"
+                ],
+                correctAnswer: 3
+            },
+            {
+                question: "Case Study: You receive an email from what appears to be your bank asking you to update your account information. The email has the bank's logo and looks official, but the sender's email address ends with a slightly different domain name. What should you immediately check?",
+                options: [
+                    "The email content for spelling errors",
+                    "The sender's email domain for authenticity",
+                    "Whether other colleagues received similar emails",
+                    "The time the email was sent"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: While reviewing your company's financial systems, you discover that a fellow employee has been accessing client accounts they shouldn't have access to according to their job role. This represents what type of threat?",
+                options: [
+                    "External hacker attack",
+                    "Malware infection",
+                    "Insider threat",
+                    "Social engineering attack"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You're at a coffee shop and need to charge your phone. There's a public charging station available, but you're concerned about security. What's the safest option?",
+                options: [
+                    "Use the public charging station since it's convenient",
+                    "Bring your own charging cable and use the power outlet",
+                    "Use your own portable battery pack or car charger",
+                    "Ask other customers if the charging station is safe"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: Your computer starts running very slowly, and you notice network activity even when you're not actively using internet applications. Pop-up ads are appearing frequently. What might be happening?",
+                options: [
+                    "Your computer needs more memory",
+                    "Your internet connection is slow",
+                    "Your computer may be infected with malware",
+                    "Too many applications are running"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: During a video call with your team, someone you don't recognize joins the meeting. They claim to be a new consultant but can't provide specific details about their role. What should you do?",
+                options: [
+                    "Welcome them and continue the meeting",
+                    "Ask them to introduce themselves to the group",
+                    "Remove them from the meeting and verify their identity through proper channels",
+                    "Ignore them and continue the meeting"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You receive an urgent email from your company's finance department asking for your login credentials to help with a 'system audit.' The email mentions that failure to comply will result in account suspension. How should you respond?",
+                options: [
+                    "Provide the credentials since it's from the finance department",
+                    "Call the finance department directly to verify the request",
+                    "Reply to the email asking for more details about the audit",
+                    "Change your password and then provide the new credentials"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're working on a client presentation containing sensitive financial data. Your colleague asks if they can borrow your laptop for a few minutes to check their email since their computer is down. What should you do?",
+                options: [
+                    "Let them use your laptop since they're a trusted colleague",
+                    "Log them into your email account so they can check theirs",
+                    "Suggest they use a public computer or wait for their computer to be fixed",
+                    "Save your work, log out completely, and then let them use the laptop"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You notice that a website you frequently visit for work now shows a security warning stating 'Your connection is not private' and the URL shows 'HTTP' instead of 'HTTPS.' What does this indicate?",
+                options: [
+                    "The website is temporarily down for maintenance",
+                    "Your internet connection is slow",
+                    "The connection is not encrypted and may be unsafe",
+                    "Your browser needs to be updated"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: An email arrives claiming to be from a major shipping company stating that a package delivery failed and asking you to click a link to reschedule. You weren't expecting any packages. What type of attack is this likely to be?",
+                options: [
+                    "Vishing",
+                    "Smishing",
+                    "Phishing",
+                    "Malware"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: Your mobile phone receives a text message claiming to be from your company's HR department, asking you to download an app to access your pay stub. The message includes a link to download the app. What should you do?",
+                options: [
+                    "Download the app immediately to access your pay stub",
+                    "Contact HR through official channels to verify the message",
+                    "Ask colleagues if they received the same message",
+                    "Download the app but don't enter any personal information"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're creating a new password for a critical financial system. You're considering using your pet's name followed by your birth year and an exclamation mark. What's wrong with this approach?",
+                options: [
+                    "It's too short for a financial system",
+                    "It uses easily guessable personal information",
+                    "It doesn't include special characters",
+                    "It's too difficult to remember"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: While working remotely, you need to print a document containing client financial information. Your home printer is out of ink, and there's a print shop nearby. What should you do?",
+                options: [
+                    "Print the document at the print shop and collect it immediately",
+                    "Email the document to the print shop for printing",
+                    "Wait until you can print it securely at the office or get printer ink",
+                    "Print only the non-sensitive parts at the print shop"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You receive a phone call from someone claiming to be from your bank's fraud department. They say there's suspicious activity on your account and need to verify your account number and PIN to secure your account. What should you do?",
+                options: [
+                    "Provide the information since they're helping secure your account",
+                    "Hang up and call your bank using the number on your bank card",
+                    "Ask them to call back later when you have more time",
+                    "Give them only your account number but not your PIN"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: Your company's finance team receives an email that appears to be from a regular vendor requesting payment to a new bank account due to 'account changes.' The email looks legitimate and includes the vendor's logo. What verification should be performed?",
+                options: [
+                    "Check if the email address matches previous communications",
+                    "Call the vendor using previously known contact information to verify",
+                    "Ask other team members if they know about the account change",
+                    "Process the payment since the vendor is legitimate"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're in an elevator with other people and receive a call from someone asking about confidential client information. The caller claims to be from your company's audit team. How should you handle this?",
+                options: [
+                    "Answer the questions quietly so others can't hear",
+                    "Tell the caller you'll call them back from a private location",
+                    "Step out of the elevator to take the call privately",
+                    "Answer the call but provide only general information"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You accidentally clicked on a suspicious link in an email and now you're concerned your computer might be compromised. You haven't noticed any immediate problems. What should you do first?",
+                options: [
+                    "Run a virus scan and continue working normally",
+                    "Restart your computer to clear any potential threats",
+                    "Disconnect from the network and report the incident to IT security",
+                    "Change all your passwords immediately"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: During a team meeting, your manager asks everyone to share their passwords for a shared system so that coverage can be maintained during vacation periods. What is the appropriate response?",
+                options: [
+                    "Share your password since your manager requested it",
+                    "Suggest implementing a proper password sharing system or service account",
+                    "Share the password only with your most trusted colleague",
+                    "Write down the password and give it to your manager privately"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're working late at the office and notice someone you don't recognize walking around the floor, looking at computer screens. They're not wearing a visitor badge and seem to be avoiding contact with employees. What should you do?",
+                options: [
+                    "Ignore them since they might be a new employee",
+                    "Approach them directly and ask who they are",
+                    "Call security or your supervisor immediately",
+                    "Follow them to see what they're doing"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You receive an authentication request on your phone for multi-factor authentication, but you didn't just try to log into any system. What should you do?",
+                options: [
+                    "Approve the request since it might be automatic",
+                    "Deny the request and check your accounts for suspicious activity",
+                    "Ignore the request and let it time out",
+                    "Approve it if you were planning to log in soon anyway"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: A new employee in your department asks to borrow your access card to get into a restricted area because they 'forgot' theirs at home and need to access some files urgently. What should you do?",
+                options: [
+                    "Lend them your access card since they're a colleague",
+                    "Escort them into the area while they access the files",
+                    "Direct them to security or their supervisor to get temporary access",
+                    "Tell them to wait until tomorrow when they bring their card"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You're downloading a software update for a program you use regularly. The download is coming from a third-party website rather than the official software company's site, but it's free and appears to be the same update. What should you do?",
+                options: [
+                    "Download from the third-party site since it's free",
+                    "Only download updates from the official software company's website",
+                    "Download it but scan it with antivirus before installing",
+                    "Ask IT department if the third-party site is safe"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're attending a conference and connect to the venue's public Wi-Fi named 'Conference_Free_WiFi.' You need to access your company's email and client database for an important presentation. What's the safest approach?",
+                options: [
+                    "Use the public Wi-Fi since it's provided by the conference venue",
+                    "Connect through your company's VPN before accessing any work systems",
+                    "Use only your mobile data for accessing work systems",
+                    "Ask other attendees if the Wi-Fi is secure"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: Your computer screen displays a pop-up warning claiming your computer is infected and provides a phone number to call for 'immediate technical support.' The warning looks official and mentions your specific operating system. What should you do?",
+                options: [
+                    "Call the provided number to get help",
+                    "Close the pop-up and run your regular antivirus scan",
+                    "Restart your computer to clear the warning",
+                    "Click on the warning to get more information"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You're about to leave for vacation and want to set up an out-of-office email reply. You're considering including details about where you're going, when you'll be back, and who to contact in your absence. What information should you avoid including?",
+                options: [
+                    "When you'll return to the office",
+                    "Alternative contact person for urgent matters",
+                    "Specific details about your vacation destination and activities",
+                    "General acknowledgment that you're out of office"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: During a client video call, you need to share your screen to show a presentation. You notice you have other sensitive documents and emails open in the background. What should you do before sharing your screen?",
+                options: [
+                    "Share your screen immediately since the presentation is ready",
+                    "Close or minimize all other applications and documents first",
+                    "Share only the specific application with the presentation",
+                    "Ask the client to wait while you prepare your screen"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Case Study: You discover that you've been using the same password for your work email, online banking, and several personal accounts. You realize this might be a security risk. What should be your immediate action?",
+                options: [
+                    "Create variations of the same password for different accounts",
+                    "Change passwords for the most important accounts first, making each unique",
+                    "Keep the same password but add different numbers to the end",
+                    "Wait until the next scheduled password change period"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Case Study: You receive an email that appears to be from your company's CEO announcing a new 'confidential acquisition' and asking you to keep the information secret while clicking a link to access more details about your role in the project. What red flags should you identify?",
+                options: [
+                    "The email came directly from the CEO",
+                    "The request for confidentiality about company matters",
+                    "Unsolicited confidential information and request to click unknown links",
+                    "Discussion of business acquisitions"
+                ],
+                correctAnswer: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const questionElement = document.getElementById('question');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const progressBar = document.getElementById('progress-bar');
+        const questionCounter = document.getElementById('question-counter');
+        const resultContainer = document.getElementById('result-container');
+        const scoreElement = document.getElementById('score');
+        const certificateButton = document.getElementById('get-certificate');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        // Initialize quiz
+        function initializeQuiz() {
+            displayQuestion();
+            updateProgress();
+            
+            nextButton.addEventListener('click', handleNextQuestion);
+            certificateButton.addEventListener('click', getCertificate);
+        }
+
+        // Display current question
+        function displayQuestion() {
+            const current = quizQuestions[currentQuestion];
+            questionElement.textContent = `${currentQuestion + 1}. ${current.question}`;
+            
+            // Clear previous options
+            optionsContainer.innerHTML = '';
+            
+            // Add options
+            current.options.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.className = 'option-btn';
+                optionButton.textContent = option;
+                optionButton.dataset.index = index;
+                
+                optionButton.addEventListener('click', () => selectOption(index));
+                
+                optionsContainer.appendChild(optionButton);
+            });
+            
+            // Disable next button until an option is selected
+            nextButton.disabled = true;
+        }
+
+        // Handle option selection
+        function selectOption(index) {
+            // Remove selected class from all options
+            const options = document.querySelectorAll('.option-btn');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            options[index].classList.add('selected');
+            
+            // Enable next button
+            nextButton.disabled = false;
+            
+            // Store user's answer
+            userAnswers[currentQuestion] = index;
+        }
+
+        // Handle next question button click
+        function handleNextQuestion() {
+            // Check if an option was selected
+            if (nextButton.disabled) return;
+            
+            // Check if answer is correct
+            if (userAnswers[currentQuestion] === quizQuestions[currentQuestion].correctAnswer) {
+                score++;
+            }
+            
+            // Move to next question or show results
+            currentQuestion++;
+            
+            if (currentQuestion < quizQuestions.length) {
+                displayQuestion();
+                updateProgress();
+            } else {
+                showResults();
+            }
+        }
+
+        // Update progress bar and counter
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            questionCounter.textContent = `Question ${currentQuestion + 1}/${quizQuestions.length}`;
+        }
+
+        // Show quiz results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            
+            const percentage = (score / quizQuestions.length) * 100;
+            scoreElement.textContent = `${score}/${quizQuestions.length} (${percentage.toFixed(0)}%)`;
+            
+            // Enable certificate button for all users who complete the test
+            certificateButton.disabled = false;
+            certificateButton.textContent = 'Get Your Certificate';
+            document.getElementById('result-message').textContent = 'Thank you for completing the test. You can now get your certificate.';
+            
+            // Send results to server
+            submitResults(score);
+        }
+
+        // Submit results to server
+        function submitResults(finalScore) {
+            fetch('/register/cyber-test/results', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ score: finalScore })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to submit results');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Results submitted successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error submitting results:', error);
+            });
+        }
+
+        // Get certificate
+        function getCertificate() {
+            loadingSpinner.style.display = 'block';
+            certificateButton.disabled = true;
+            
+            fetch('/register/cyber-test/verify', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to verify test completion');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.eligible) {
+                    // Show message about certificate download
+                    document.getElementById('result-message').textContent = 'Your certificate is being downloaded. You will be redirected to the registration page.';
+                    
+                    // Store the certificate URL
+                    const certificateUrl = `http://localhost:5000/register/cyber-test/certificate?token=${token}`;
+                    
+                    // Clear token immediately
+                    try {
+                        console.log('Removing token from session storage');
+                        sessionStorage.removeItem('cyberTestToken');
+                        console.log('Token removed successfully');
+                    } catch (e) {
+                        console.error('Error removing token:', e);
+                    }
+                    
+                    // Open certificate in a new tab/window
+                    window.open(certificateUrl, '_blank');
+                    
+                    // Add a button to manually return to registration
+                    const resultContainer = document.getElementById('result-container');
+                    const returnButton = document.createElement('button');
+                    returnButton.className = 'btn btn-primary mt-3';
+                    returnButton.textContent = 'Return to Registration';
+                    returnButton.onclick = function() {
+                        window.location.href = 'cyberawareness-test-registration.html';
+                    };
+                    resultContainer.appendChild(returnButton);
+                    
+                    // Also set a timeout to redirect automatically
+                    setTimeout(() => {
+                        window.location.href = 'cyberawareness-test-registration.html';
+                    }, 5000); // Wait 5 seconds before redirecting
+                } else {
+                    document.getElementById('result-message').textContent = 'Error: Not eligible for certificate.';
+                    loadingSpinner.style.display = 'none';
+                    certificateButton.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error getting certificate:', error);
+                document.getElementById('result-message').textContent = 'Error retrieving certificate. Please try again.';
+                loadingSpinner.style.display = 'none';
+                certificateButton.disabled = false;
+            });
+        }
+
+        // Start the quiz
+        initializeQuiz();
+    });
+    </script>
+</body>
+</html> 
