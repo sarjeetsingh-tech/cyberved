@@ -64,18 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add popup content
     popupContent.innerHTML = `
-        <div class="popup-header">
-            <h2>⚠️ Important Notice: Events Postponed ⚠️</h2>
+       <div class="popup-header">
+            <h2>⚠️ Important Notice: Events Rescheduled ⚠️</h2>
             <button class="popup-close">&times;</button>
         </div>
         <div class="popup-body">
-            <p>Dear Participant,</p>
+            <p>Dear Participants,</p>
             <p>Greetings from UPSIFS, Lucknow!</p>
-            <p>We are grateful for your active interest and response to participate and contribute in the Hackathon, Summit, and call for papers scheduled for March 16-21, 2025.</p>
-            <p>We deeply regret to inform you that due to certain unavoidable reasons the programs have been postponed and we shall communicate with you soon with the revised dates.</p>
-            <p>Stay connected.</p>
+            <p>We're excited to announce the <strong>new dates</strong> for our upcoming events in August 2025:</p>
+            
+            <p><strong>🚀 Hackathon:</strong> August 12-14, 2025</p>
+            <p><strong>🎯 Summit:</strong> August 18-20, 2025</p>
+            <p><strong>📝 Call for Papers:</strong> August 13, 2025</p>
+            
+            <p>Stay connected for further updates!</p>
             <p>Thank you.</p>
-            <p class="popup-signature">Best Regards,<br>UPSIFS Team</p>
+            
         </div>
     `;
     
