@@ -191,7 +191,7 @@
             submitButton.disabled = true;
 
             // --- MODIFIED FETCH LOGIC ---
-            fetch('http://localhost:5000/register/cyber-test', {
+            fetch('/register/cyber-test', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -213,7 +213,7 @@
 
                     // Create and display a download button
                     const downloadButton = document.createElement('a');
-                    downloadButton.href = `http://localhost:5000/register/cyber-test/certificate?token=${data.certificateToken}`;
+                    downloadButton.href = `/register/cyber-test/certificate?token=${data.certificateToken}`;
                     downloadButton.className = 'btn btn-success btn-lg d-block mx-auto';
                     downloadButton.textContent = 'Download Your Certificate';
                     downloadButton.setAttribute('target', '_blank'); // Open in a new tab

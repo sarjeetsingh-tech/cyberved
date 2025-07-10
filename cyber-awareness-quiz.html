@@ -676,7 +676,7 @@
 
         // Submit results to server
         function submitResults(finalScore) {
-            fetch('http://localhost:5000/register/cyber-test/results', {
+            fetch('/register/cyber-test/results', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -703,7 +703,7 @@
             loadingSpinner.style.display = 'block';
             certificateButton.disabled = true;
             
-            fetch('http://localhost:5000/register/cyber-test/verify', {
+            fetch('/register/cyber-test/verify', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -721,7 +721,7 @@
                     document.getElementById('result-message').textContent = 'Your certificate is being downloaded. You will be redirected to the registration page.';
                     
                     // Store the certificate URL
-                    const certificateUrl = `http://localhost:5000/register/cyber-test/certificate?token=${token}`;
+                    const certificateUrl = `/register/cyber-test/certificate?token=${token}`;
                     
                     // Clear token immediately
                     try {
