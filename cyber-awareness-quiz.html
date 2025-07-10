@@ -676,7 +676,7 @@
 
         // Submit results to server
         function submitResults(finalScore) {
-            fetch('/register/cyber-test/results', {
+            fetch('http://localhost:5000/register/cyber-test/results', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -703,7 +703,7 @@
             loadingSpinner.style.display = 'block';
             certificateButton.disabled = true;
             
-            fetch('/register/cyber-test/verify', {
+            fetch('http://localhost:5000/register/cyber-test/verify', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`

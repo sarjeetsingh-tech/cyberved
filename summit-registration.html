@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summit Registration Form</title>
     <style>
@@ -188,10 +187,12 @@
             <p>DIMENSION OF CYBER WARFARE,
                 MULTILATERAL LEGAL FRAMEWORKS
                 & STRATEGIC COUNTERMEASURES</p>
+            <p style="margin-top: 10px; font-weight: bold;">August 11-13, 2025 | UPSIFS, Lucknow</p>
         </div>
 
         <div class="form-container">
             <form id="registrationForm" novalidate>
+                <input type="hidden" name="formType" value="summit">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName" class="required">First Name</label>
@@ -260,7 +261,7 @@
     </div>
 
     <script>
-        const API_URL = '/register';
+        const API_URL = 'http://localhost:5000/register';
 
         const validationRules = {
             telephone: {
@@ -354,9 +355,9 @@
                         middleName: data.middleName,
                         lastName: data.lastName,
                         email: data.email,
-                        phone: data.telephone,
+                        telephone: data.telephone,
                         whatsapp: data.whatsapp,
-                        telegram_id: data.telegram,
+                        telegramId: data.telegram,
                         organization: data.organization,
                         designation: data.designation
                     };
@@ -367,18 +368,7 @@
                             'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         },
-                        body: JSON.stringify({
-                            formType: "summit",
-                            firstName: data.firstName,
-                            middleName: data.middleName || "",
-                            lastName: data.lastName,
-                            email: data.email,
-                            telephone: data.telephone,
-                            whatsapp: data.whatsapp,
-                            telegramId: data.telegram,
-                            organization: data.organization,
-                            designation: data.designation
-                        })
+                        body: JSON.stringify(apiData)
                     });
 
                     if (!response.ok) {
@@ -388,6 +378,20 @@
                     const result = await response.json();
 
                     if (result.success) {
+                        // Create overlay for blur effect
+                        const overlay = document.createElement('div');
+                        overlay.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.5);
+                            backdrop-filter: blur(5px);
+                            z-index: 999;
+                        `;
+                        document.body.appendChild(overlay);
+                        
                         // Create success message
                         const successMessage = document.createElement('div');
                         successMessage.style.cssText = `
@@ -410,9 +414,10 @@
                         `;
                         document.body.appendChild(successMessage);
 
-                        // Remove success message and reset form after 3 seconds
+                        // Remove success message, overlay and reset form after 3 seconds
                         setTimeout(() => {
                             successMessage.remove();
+                            overlay.remove();
                             form.reset();
                         }, 3000);
                     } else {
@@ -420,6 +425,20 @@
                     }
                 } catch (error) {
                     console.error('Error:', error);
+                    // Create overlay for blur effect
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.5);
+                        backdrop-filter: blur(5px);
+                        z-index: 999;
+                    `;
+                    document.body.appendChild(overlay);
+                    
                     // Show error message to user
                     const errorMessage = document.createElement('div');
                     errorMessage.style.cssText = `
@@ -443,6 +462,7 @@
 
                     setTimeout(() => {
                         errorMessage.remove();
+                        overlay.remove();
                     }, 3000);
                 } finally {
                     submitBtn.disabled = false;

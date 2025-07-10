@@ -1129,3 +1129,29 @@ body {
         padding: 0.5rem 1rem;
     }
 }
+
+/* About UPSIFS Section */
+.about-upsifs {
+    padding: 60px 8%;
+    background-color: #f8f9fa;
+}
+
+.about-upsifs .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.about-upsifs .about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.about-upsifs p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #444;
+    text-align: justify;
+}

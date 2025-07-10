@@ -23,12 +23,6 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        .header h1 {
-            color: rgb(204, 0, 0);
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px #7a30ff;
-            margin-bottom: 5px;
-        }
         .header h2 {
             color: #e91e63;
             font-size: 1.8rem;
@@ -41,14 +35,6 @@
         .logo {
             filter: drop-shadow(0 0 8px rgba(8, 0, 55, 0.6));
             height: 80px;
-        }
-        .registration-open {
-            background-color: #dc3545;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
         }
         .form-control {
             background-color: rgba(255, 255, 255, 0.1);
@@ -74,23 +60,11 @@
         .btn-primary:hover {
             background-color: #c2185b;
         }
-        .date-info {
-            color: #ffcc00;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
         .invalid-feedback {
-            display: none;
             color: #ff6b6b;
-            font-size: 0.85rem;
         }
         .is-invalid {
             border-color: #ff6b6b !important;
-        }
-        .is-invalid:focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 107, 107, 0.25) !important;
         }
         .quiz-info {
             background-color: rgba(122, 48, 255, 0.2);
@@ -99,35 +73,13 @@
             margin-bottom: 25px;
             border-radius: 0 5px 5px 0;
         }
-        .form-text {
-            color: #aaa;
-            font-size: 0.8rem;
-        }
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
             .header h2 {
                 font-size: 1.4rem;
             }
             .registration-container {
                 padding: 20px 15px;
                 margin-top: 20px;
-            }
-            .quiz-info {
-                padding: 10px;
-            }
-            .date-info {
-                font-size: 1rem;
-            }
-        }
-        @media (max-width: 576px) {
-            .container {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-            .logo-container {
-                max-width: 150px;
             }
         }
     </style>
@@ -140,15 +92,13 @@
                     <div class="logo-container mb-3">
                         <img src="image.png" alt="Logo" class="img-fluid logo">
                     </div>
-                    
                     <h2>Cyber Awareness Test Registration</h2>
-                   
                 </div>
                 
                 <div class="registration-container">
                     <div class="quiz-info">
-                        <p><strong>Welcome to the Cyber Awareness Test</strong> - a comprehensive assessment to evaluate your knowledge about cybersecurity best practices, phishing detection, password management, and more.</p>
-                        <p class="mb-0">After registration, you'll gain access to our interactive test platform. <strong>Digital certificates</strong> will be provided to successful participants.</p>
+                        <p><strong>Welcome to the Cyber Awareness Test</strong> - a comprehensive assessment to evaluate your knowledge about cybersecurity best practices.</p>
+                        <p class="mb-0">After registration, you'll gain access to our interactive test. <strong>Digital certificates</strong> are provided to successful participants.</p>
                     </div>
                     
                     <form id="registrationForm" novalidate>
@@ -166,14 +116,14 @@
                         
                         <div class="mb-3">
                             <label for="telephone" class="form-label">Phone Number <span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="10-digit mobile number" required>
-                            <div class="invalid-feedback">Please enter a valid 10-digit phone number</div>
+                            <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                            <div class="invalid-feedback">Please enter your phone number</div>
                         </div>
                         
                         <div class="mb-3">
                             <label for="whatsapp" class="form-label">WhatsApp Number <span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="10-digit WhatsApp number" required>
-                            <div class="invalid-feedback">Please enter a valid 10-digit WhatsApp number</div>
+                            <input type="tel" class="form-control" id="whatsapp" name="whatsapp" required>
+                            <div class="invalid-feedback">Please enter your WhatsApp number</div>
                         </div>
                         
                         <div class="mb-3">
@@ -195,13 +145,13 @@
                         </div>
                         
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" required>
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
                             <label class="form-check-label" for="agreeTerms">I agree to participate in the Cyber Awareness Test</label>
-                            <div class="invalid-feedback">You must agree to participate in the test</div>
+                            <div class="invalid-feedback">You must agree to participate</div>
                         </div>
                         
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Register & Start Test</button>
+                            <button type="submit" id="submitButton" class="btn btn-primary">Register & Start Test</button>
                         </div>
                     </form>
                     <div id="formMessage" class="mt-3 text-center"></div>
@@ -211,133 +161,85 @@
     </div>
 
     <script>
-        // Form validation
         const form = document.getElementById('registrationForm');
-        
-        // Validate email format
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-        
-        // Validate phone number format (10 digits)
-        function isValidPhone(phone) {
-            // Basic validation for 10-digit Indian mobile numbers
-            const phoneRegex = /^[6-9][0-9]{9}$/;
-            return phoneRegex.test(phone);
-        }
-        
-        // Validate each field
-        function validateField(field) {
-            let isValid = true;
-            
-            if (field.required && !field.value.trim()) {
-                field.classList.add('is-invalid');
-                isValid = false;
-            } else if (field.type === 'email' && !isValidEmail(field.value)) {
-                field.classList.add('is-invalid');
-                isValid = false;
-            } else if ((field.id === 'telephone' || field.id === 'whatsapp') && !isValidPhone(field.value)) {
-                field.classList.add('is-invalid');
-                isValid = false;
-            } else if (field.type === 'checkbox' && !field.checked) {
-                field.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                field.classList.remove('is-invalid');
-            }
-            
-            return isValid;
-        }
-        
-        // Add input event listeners for real-time validation
-        const formFields = form.querySelectorAll('input');
-        formFields.forEach(field => {
-            field.addEventListener('input', () => {
-                validateField(field);
-            });
-        });
-        
-        // Form submission handler
+        const formMessage = document.getElementById('formMessage');
+        const submitButton = document.getElementById('submitButton');
+
+        // Basic validation logic (can be kept as is)
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate all fields first
             let isFormValid = true;
-            formFields.forEach(field => {
-                if (!validateField(field)) {
+            form.querySelectorAll('[required]').forEach(field => {
+                if (field.type === 'checkbox' ? !field.checked : !field.value.trim()) {
+                    field.classList.add('is-invalid');
                     isFormValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
                 }
             });
-            
+
             if (!isFormValid) {
-                document.getElementById('formMessage').innerHTML = '<p class="text-danger">Please fill in all required fields correctly</p>';
+                formMessage.innerHTML = '<p class="text-danger">Please fill in all required fields.</p>';
                 return;
             }
             
-            // Get form data
             const formData = new FormData(this);
-            const formDataObject = {};
-            formData.forEach((value, key) => {
-                if (key !== 'agreeTerms') { // Skip the checkbox data
-                    formDataObject[key] = value;
-                }
-            });
+            const data = Object.fromEntries(formData.entries());
             
-            // Display loading message
-            document.getElementById('formMessage').innerHTML = '<p class="text-info">Processing registration...</p>';
-            
-            // Send to the backend endpoint
-            fetch('/register/cyber-test', {
+            formMessage.innerHTML = '<p class="text-info">Processing...</p>';
+            submitButton.disabled = true;
+
+            // --- MODIFIED FETCH LOGIC ---
+            fetch('http://localhost:5000/register/cyber-test', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formDataObject)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             })
-            .then(response => {
+            .then(async response => {
                 if (!response.ok) {
-                    return response.json().then(data => {
-                        throw new Error(data.error || 'Network response was not ok: ' + response.statusText);
-                    });
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'An unknown error occurred.');
                 }
                 return response.json();
             })
             .then(data => {
-                if (data.token) {
-                    // Store token in sessionStorage
-                    try {
-                        sessionStorage.setItem('cyberTestToken', data.token);
-                    } catch (e) {
-                        document.getElementById('formMessage').innerHTML = '<p class="text-danger">Unable to store session data. Please enable sessionStorage in your browser.</p>';
-                        return;
-                    }
+                // SCENARIO 1: User has already completed the test
+                if (data.alreadyCompleted && data.certificateToken) {
+                    formMessage.innerHTML = `<p class="text-success">${data.message}</p>`;
                     
-                    // Show success message
-                    document.getElementById('formMessage').innerHTML = '<p class="text-success">Registration successful! Redirecting to test platform...</p>';
+                    // Hide the form
+                    form.style.display = 'none';
+
+                    // Create and display a download button
+                    const downloadButton = document.createElement('a');
+                    downloadButton.href = `http://localhost:5000/register/cyber-test/certificate?token=${data.certificateToken}`;
+                    downloadButton.className = 'btn btn-success btn-lg d-block mx-auto';
+                    downloadButton.textContent = 'Download Your Certificate';
+                    downloadButton.setAttribute('target', '_blank'); // Open in a new tab
                     
-                    // Redirect to quiz page
+                    formMessage.appendChild(downloadButton);
+
+                // SCENARIO 2: New or returning (incomplete) user
+                } else if (data.token) {
+                    sessionStorage.setItem('cyberTestToken', data.token);
+                    formMessage.innerHTML = `<p class="text-success">${data.message}</p><p>Redirecting to the test...</p>`;
+                    
                     setTimeout(() => {
-                        window.location.href = 'cyber-awareness-quiz.html';
-                    }, 1500);
+                        window.location.href = 'cyber-awareness-quiz.html'; // Or your quiz page
+                    }, 2000);
+
                 } else {
-                    throw new Error('Registration failed: No token received');
+                    // Fallback for unexpected success response
+                    throw new Error('Invalid response from server.');
                 }
             })
             .catch(error => {
                 console.error('Registration error:', error);
-                
-                // Check if this is the "already completed" error
-                if (error.message && error.message.includes('already completed this test')) {
-                    document.getElementById('formMessage').innerHTML = 
-                        '<div class="alert alert-warning">' +
-                        '<p><strong>Access Denied:</strong> You have already completed this test.</p>' +
-                        '</div>';
-                } else {
-                    document.getElementById('formMessage').innerHTML = '<p class="text-danger">Registration failed. Please try again later.</p>';
-                }
+                formMessage.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+                submitButton.disabled = false;
             });
         });
     </script>
 </body>
-</html> 
+</html>

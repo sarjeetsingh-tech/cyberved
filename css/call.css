@@ -1215,3 +1215,83 @@ body {
         transition: none !important;
     }
 }
+
+/* Important Dates Section */
+.dates-section {
+    padding: 6rem 2rem;
+    background: var(--bg-light);
+    position: relative;
+}
+
+.dates-timeline {
+    max-width: 1000px;
+    margin: 3rem auto 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.date-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    border-left: 4px solid var(--primary);
+}
+
+.date-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.date-icon {
+    background: var(--gradient-primary);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.date-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.date-content {
+    flex-grow: 1;
+}
+
+.date-content h3 {
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.date-content .date {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Media Queries for Dates Section */
+@media (max-width: 768px) {
+    .date-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+    
+    .date-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
