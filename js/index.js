@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>Greetings from UPSIFS, Lucknow!</p>
             <p>We're excited to announce the <strong>new dates</strong> for our upcoming events in August 2025:</p>
             
-            <p><strong>🚀 Hackathon:</strong> August 12-14, 2025</p>
+            <p><strong>🚀 Hackathon:</strong> August 11-13, 2025</p>
             <p><strong>🎯 Summit:</strong> August 18-20, 2025</p>
             <p><strong>📝 Call for Papers:</strong> August 13, 2025</p>
             
