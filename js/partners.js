@@ -26,36 +26,54 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
  
-    // Stats counter animation
+    // Stats counter animation - FIXED VERSION
     const stats = document.querySelectorAll('.stat-number');
     
-    function animateValue(element, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const currentValue = Math.floor(progress * (end - start) + start);
-            element.textContent = currentValue + '+';
+    // Set direct values for each stat counter based on the organization
+    const statsValues = {
+        // UPSIFS stats
+        "2000+": 2000,
+        "50+": 50,
+        "15+": 15,
+        // Cybervidyapeeth stats
+        "5000+": 5000,
+        "100+": 100,
+        "25+": 25
+    };
+
+    function animateCounter(element, endValue) {
+        let startValue = 0;
+        const duration = 2000;
+        const startTime = performance.now();
+        const hasPlus = element.textContent.includes('+');
+        
+        function updateCounter(timestamp) {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const currentValue = Math.floor(startValue + progress * (endValue - startValue));
+            
+            element.textContent = hasPlus ? currentValue + '+' : currentValue;
+            
             if (progress < 1) {
-                window.requestAnimationFrame(step);
+                requestAnimationFrame(updateCounter);
             }
-        };
-        window.requestAnimationFrame(step);
+        }
+        
+        requestAnimationFrame(updateCounter);
     }
- 
+    
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const endValue = parseInt(entry.target.textContent);
-                animateValue(entry.target, 0, endValue, 2000);
+                const originalText = entry.target.textContent;
+                const endValue = statsValues[originalText] || parseInt(originalText) || 0;
+                animateCounter(entry.target, endValue);
                 statsObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
- 
+    
     stats.forEach(stat => {
-        const value = stat.textContent;
-        stat.textContent = '0';
         statsObserver.observe(stat);
     });
  

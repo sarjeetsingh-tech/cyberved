@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <p><strong>🚀 Hackathon:</strong> August 11-13, 2025</p>
             <p><strong>🎯 Summit:</strong> August 18-20, 2025</p>
             <p><strong>📝 Call for Papers:</strong> August 13, 2025</p>
-            
             <p>Stay connected for further updates!</p>
             <p>Thank you.</p>
             

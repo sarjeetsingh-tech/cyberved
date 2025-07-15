@@ -191,6 +191,11 @@
         </div>
 
         <div class="form-container">
+            <div style="background-color: #ff4444; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center;">
+                <h3 style="margin-bottom: 10px;">⚠️ Registration Temporarily Closed</h3>
+                <p>We are currently updating our registration system. Please check back soon for reopening.</p>
+            </div>
+            
             <form id="registrationForm" novalidate>
                 <input type="hidden" name="formType" value="summit">
                 <div class="form-row">
@@ -248,8 +253,8 @@
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" class="subbtn primary-btn" id="subbtn">
-                        Register for Summit
+                    <button type="submit" class="subbtn primary-btn" id="subbtn" disabled>
+                        Registration Closed
                         <div class="spinner" id="submitSpinner"></div>
                     </button>
                     <a href="/index.html" class="subbtn secondary-btn">

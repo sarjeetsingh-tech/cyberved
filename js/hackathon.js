@@ -191,6 +191,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Fix NaN in stats and dates
+    function fixNaNValues() {
+        // Find all stat elements
+        const statElements = document.querySelectorAll('.stat-number, .stat-box span, .meta-item span');
+        
+        statElements.forEach(element => {
+            const text = element.textContent.trim();
+            
+            // Check if text is NaN or undefined
+            if (text === 'NaN' || text === 'undefined') {
+                // Look at the parent element to determine what kind of stat this is
+                const parent = element.closest('.stat-box, .meta-item');
+                
+                if (parent) {
+                    const icon = parent.querySelector('i');
+                    
+                    // If it has a calendar icon, it's a date
+                    if (icon && icon.classList.contains('fa-calendar')) {
+                        element.textContent = 'August 18-20, 2025';
+                    }
+                    // If it has a trophy icon, it's a prize pool
+                    else if (icon && icon.classList.contains('fa-trophy')) {
+                        element.textContent = '₹2,75,000+';
+                    }
+                    // If it has a users icon, it's participants/teams
+                    else if (icon && icon.classList.contains('fa-users')) {
+                        element.textContent = '50+';
+                    }
+                    // Otherwise, set a default value
+                    else {
+                        element.textContent = '100+';
+                    }
+                }
+            }
+        });
+    }
+
     // Timeline Navigation
     function initializeTimeline() {
         const timelinePhases = document.querySelectorAll('.timeline-phase');
@@ -239,24 +276,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Initialize everything
+    function initialize() {
+        if (slider && slides.length) {
+            startAutoplay();
+        }
+        
+        if (scheduleTabBtns.length) {
+            initializeTabs();
+        }
+        
+        initializeAnimations();
+        initializeSmoothScroll();
+        initializeTimeline();
+        handleBackToTop();
+        fixNaNValues(); // Call the new function here
+    }
+
     // Window event listeners
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', debounce(() => {
         updateSlidePosition(true);
     }, 250));
 
-    // Initialize everything
-    function initialize() {
-        if (slider && slides.length) {
-            updateSlidePosition(true);
-            startAutoplay();
-        }
-        initializeTabs();
-        initializeAnimations();
-        initializeSmoothScroll();
-        initializeTimeline();
-        handleBackToTop();
-    }
-
+    // Initialize on page load
     initialize();
+    
+    // Also run fixNaNValues immediately in case elements are already visible
+    fixNaNValues();
 });
