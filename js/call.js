@@ -217,6 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize any custom interactive elements
     initializeInteractiveElements();
+    
+    // Also run fixNaNValues immediately
+    fixNaNValues();
 });
 
 // Initialize interactive elements
@@ -233,6 +236,9 @@ function initializeInteractiveElements() {
         });
     });
 
+    // Fix NaN values in stats and dates
+    fixNaNValues();
+
     // Add smooth reveal to statistics
     const stats = document.querySelectorAll('.stat-number');
     const statsObserver = new IntersectionObserver((entries) => {
@@ -247,18 +253,65 @@ function initializeInteractiveElements() {
     stats.forEach(stat => statsObserver.observe(stat));
 }
 
+// Function to fix NaN values
+function fixNaNValues() {
+    // Find all stat elements
+    const statElements = document.querySelectorAll('.stat-number, .stat-box span');
+    
+    statElements.forEach(element => {
+        const text = element.textContent.trim();
+        
+        // Check if text is NaN or undefined
+        if (text === 'NaN' || text === 'undefined') {
+            // Look at the parent element to determine what kind of stat this is
+            const parent = element.closest('.stat-box');
+            
+            if (parent) {
+                const icon = parent.querySelector('i');
+                
+                // If it has a calendar icon, it's a date
+                if (icon && icon.classList.contains('fa-calendar-alt')) {
+                    element.textContent = 'August 18-20';
+                }
+                // If it has an award icon, it's a prize pool
+                else if (icon && icon.classList.contains('fa-award')) {
+                    element.textContent = '150000';
+                }
+                // If it has a users icon, it's participants
+                else if (icon && icon.classList.contains('fa-users')) {
+                    element.textContent = '500+';
+                }
+                // Otherwise, set a default value
+                else {
+                    element.textContent = '100+';
+                }
+            }
+        }
+    });
+}
+
 // Animate numbers
 function animateNumber(element) {
-    const final = parseInt(element.textContent);
+    // Get the original text
+    const originalText = element.textContent;
+    // Check if it has a plus sign
+    const hasPlus = originalText.endsWith('+');
+    // Parse the numeric value, removing the plus if present
+    const final = parseInt(hasPlus ? originalText.slice(0, -1) : originalText);
+    
+    // Use a default value if parsing failed
+    const targetValue = isNaN(final) ? 100 : final;
+    
     const duration = 2000;
     const start = Date.now();
 
     const update = () => {
         const now = Date.now();
         const progress = Math.min((now - start) / duration, 1);
-        const value = Math.floor(progress * final);
+        const value = Math.floor(progress * targetValue);
         
-        element.textContent = value.toLocaleString();
+        // Add back the plus sign if the original had one
+        element.textContent = hasPlus ? value + '+' : value.toLocaleString();
 
         if (progress < 1) {
             requestAnimationFrame(update);

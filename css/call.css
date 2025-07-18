@@ -217,6 +217,14 @@ body {
     display: block;
 }
 
+.stat-numbe {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0.5rem 0;
+    display: block;
+}
+
 .stat-label {
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
